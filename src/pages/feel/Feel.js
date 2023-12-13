@@ -4,7 +4,7 @@ const Feel = () => {
   return (
     <div>
       <div className="title">
-        현재 감정 상태를 선택해주세요
+        현재 감정 상태를 선택해주세요 이미지를 사이즈 조절 및 레이아웃 진행
         <img src="./images/layer.svg" alt="" className="" />
         매우 좋음
         <img src="./images/layer1.svg" alt="" className="" />
