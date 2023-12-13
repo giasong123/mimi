@@ -1,6 +1,6 @@
 import React from "react";
-import { IntroWrap } from "../../styles/introcss/introwrap";
-import { IntroPage } from "../../styles/introcss/intropage";
+import { IntroWrap } from "../../styles/introstyle/introwrap";
+import { IntroPage } from "../../styles/introstyle/intropage";
 // intro page 안에 js를 넣으니 import 문제 생겨서 잠깐 page로 빼줌
 // intro emotion css 적용 완료
 // wrap은 적용이 힘들어 따로 intro.css에 폰트랑 같이 보관중
