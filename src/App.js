@@ -9,7 +9,7 @@ import { Wrap } from "./styles/basic";
 
 const App = () => {
   return (
-    <Wrap maxw={960}>
+    <Wrap>
       <Routes>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/about" element={<About />}></Route>
