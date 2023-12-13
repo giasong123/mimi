@@ -6,20 +6,27 @@ import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
 import { Wrap } from "./styles/basic";
-import LayWrap from "./components/LayWrap";
+import LayWrap from "./components/Header";
+import Header from "./components/Header";
+import { calc } from "antd/es/theme/internal";
 
 const App = () => {
+  const mainStyle = {
+    width: "calc(100% - 114px)",
+  };
   return (
     <Wrap>
-      <Routes>
-        <Route path="/" element={<LayWrap />}></Route>
-        <Route path="/" element={<Intro />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/calendar" element={<Calendar />}></Route>
-        <Route path="/chart" element={<Chart />}></Route>
-        <Route path="/Feel" element={<Feel />}></Route>
-        <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
-      </Routes>
+      <Header></Header>
+      <main style={mainStyle}>
+        <Routes>
+          <Route path="/" element={<Intro />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/chart" element={<Chart />}></Route>
+          <Route path="/Feel" element={<Feel />}></Route>
+          <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
+        </Routes>
+      </main>
     </Wrap>
   );
 };

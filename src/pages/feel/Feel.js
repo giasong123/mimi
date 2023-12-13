@@ -3,19 +3,6 @@ import "../../styles/feel/feel.css";
 const Feel = () => {
   return (
     <div>
-      <div className="category">
-        <img src="./images/navintro.svg" alt="" className="first" />
-        첫 화면
-        <img src="./images/navintro1.svg" alt="" className="" />
-        감정 상태
-        <img src="./images/navintro2.svg" alt="" className="" />
-        캘린더
-        <img src="./images/navintro3.svg" alt="" className="" />
-        차트
-        <img src="./images/navintro4.svg" alt="" className="" />
-        ABOUT
-      </div>
-
       <div className="title">
         현재 감정 상태를 선택해주세요
         <img src="./images/layer.svg" alt="" className="" />

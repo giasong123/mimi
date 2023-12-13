@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-const LayWrap = () => {
+const Header = () => {
   const LayPage = styled.div`
-    width: 100%;
+    width: 114px;
     height: 100vh;
     /* background-color: hotpink; */
     .nav {
@@ -68,4 +68,4 @@ const LayWrap = () => {
   );
 };
 
-export default LayWrap;
+export default Header;
