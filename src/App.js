@@ -6,11 +6,13 @@ import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
 import { Wrap } from "./styles/basic";
+import LayWrap from "./components/LayWrap";
 
 const App = () => {
   return (
-    <Wrap maxw={960}>
+    <Wrap>
       <Routes>
+        <Route path="/" element={<LayWrap />}></Route>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
