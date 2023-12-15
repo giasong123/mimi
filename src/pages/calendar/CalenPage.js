@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
+
 import React, { useEffect, useState } from "react";
 import { CTWrap, CalenLeft, TodoRight } from "../../styles/calen/calendarstyle";
 import TodoInput from "../../components/calenders/TodoInput";
 
 // 초기 todo 목록
 const initTodoList = [];
+
 
 const CalenPage = () => {
   const [todoList, setTodoList] = useState(initTodoList);
@@ -139,12 +141,12 @@ const CalenPage = () => {
                 <div className="blue-line"></div>
                 <img src="../images/layer.svg" />
                 <p>매우 좋음</p>
-                <hr className="emt-line" />
+                <div className="emt-line"></div>
                 <p>기쁜</p>
               </span>
             </div>
 
-            <hr />
+            <hr className="todo-line" />
 
             <div className="todo-main">
               <div
