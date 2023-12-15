@@ -1,12 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/about/About";
-import Calendar from "./pages/calendar/Calendar";
+import Calendar from "./pages/calendar/CalenPage";
 import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
 import { Wrap } from "./styles/basic";
-import LayWrap from "./components/Header";
 import Header from "./components/Header";
 import { calc } from "antd/es/theme/internal";
 
