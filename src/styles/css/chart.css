@@ -1,0 +1,164 @@
+@import url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff");
+
+.chart-page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.main-box {
+  position: relative;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 1651px;
+  height: 901px;
+  background: #00042d;
+  border-radius: 20px;
+}
+
+.box-inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1589px;
+  height: 814px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 50px 0px 0px 100px;
+}
+.feel-facebox {
+  position: relative;
+  width: 1241px;
+  height: 240px;
+}
+.feel-title {
+  position: relative;
+  width: 450px;
+  height: 85px;
+}
+.feel-title p {
+  font-size: 30px;
+  font-family: "S-CoreDream-3Light";
+}
+.feel-face {
+  position: relative;
+  width: 1241px;
+  height: 240px;
+  margin-left: 60px;
+}
+.feel-face ul {
+  display: flex;
+  justify-content: space-between;
+}
+.feel-face li:hover {
+  background-color: #fcd0cf;
+  border-radius: 50%;
+  width: 125px;
+  height: 80px;
+}
+.feel-face img {
+  position: relative;
+  display: block;
+  width: 125px;
+  height: 177px;
+}
+.feel-face p {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-family: "S-CoreDream-3Light";
+}
+
+hr {
+  width: 1385px;
+  height: 1px;
+  background: #9c9c9c;
+  display: flex;
+  margin-top: 50px;
+}
+
+.feel-chart {
+  position: relative;
+  display: flex;
+  width: 780px;
+  height: 350px;
+  background: #b4b9e9;
+}
+
+.feel-keywordbox {
+  position: relative;
+
+  width: 550px;
+  height: 312px;
+  margin-right: 70px;
+  margin-bottom: 50px;
+}
+
+.keyword-inner {
+  position: relative;
+  width: 550px;
+}
+
+.feel-keywordbox ul {
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+}
+.feel-keywordbox li {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.feel-keywordbox li .daydate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.feel-keywordbox ul li img:first-child {
+  position: relative;
+  height: 65px;
+}
+.keyword-inner .cloud img:first-child {
+  position: relative;
+  height: 35px;
+}
+.keyword-inner .rain img:first-child {
+  position: relative;
+  height: 60px;
+}
+.feel-keywordbox ul li p {
+  font-size: 22px;
+  margin-top: 37px;
+  margin-left: 320px;
+}
+.keyword-inner .cloud p {
+  margin-top: 25px;
+  margin-left: 257px;
+}
+.keyword-title {
+  position: relative;
+  width: 275px;
+  height: 50px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.keyword-title p {
+  font-size: 25px;
+  font-family: "S-CoreDream-3Light";
+}
+.feeling {
+  width: 60px;
+  height: 20px;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
