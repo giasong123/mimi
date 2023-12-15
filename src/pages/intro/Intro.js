@@ -1,12 +1,17 @@
 import React from "react";
 import { IntroWrap } from "../../styles/introstyle/introwrap";
 import { IntroPage } from "../../styles/introstyle/intropage";
+import { useNavigate } from "react-router";
 // intro page 안에 js를 넣으니 import 문제 생겨서 잠깐 page로 빼줌
 // intro emotion css 적용 완료
 // wrap은 적용이 힘들어 따로 intro.css에 폰트랑 같이 보관중
 // 버튼추가 필요
 
 const Intro = () => {
+  const navigate = useNavigate();
+  const handleClickFeel = () => {
+    navigate("/feel");
+  };
   return (
     <IntroWrap>
       <IntroPage>
@@ -38,7 +43,13 @@ const Intro = () => {
 
             <input type="text" placeholder="나이를 입력해주세요" />
             <br />
-            <button>확인</button>
+            <button
+              onClick={() => {
+                handleClickFeel();
+              }}
+            >
+              확인
+            </button>
           </form>
         </div>
 
