@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const LayPage = styled.div`
@@ -49,19 +50,29 @@ const Header = () => {
   return (
     <LayPage>
       <div className="nav">
-        <div className="nav-img">
-          <img src="./images/nintro.svg" />
-          <p>첫화면</p>
-          <img src="./images/ncheck.svg" />
-          <p>감정상태</p>
-          <img src="./images/ncalen.svg" />
-          <p>캘린더</p>
-          <img src="./images/nchart.svg" />
-          <p>차트</p>
-        </div>
         <div className="nabout-icon">
-          <img src="./images/nabout.svg" />
-          <p>ABOUT</p>
+          <Link to="/about">
+            <img src="./images/nabout.svg" />
+            <p>ABOUT</p>
+          </Link>
+        </div>
+        <div className="nav-img">
+          <Link to="/">
+            <img src="./images/nintro.svg" />
+            <p>첫화면</p>
+          </Link>
+          <Link to="/feel">
+            <img src="./images/ncheck.svg" />
+            <p>감정상태</p>
+          </Link>
+          <Link to="/calendar">
+            <img src="./images/ncalen.svg" />
+            <p>캘린더</p>
+          </Link>
+          <Link to="/chart">
+            <img src="./images/nchart.svg" />
+            <p>차트</p>
+          </Link>
         </div>
       </div>
     </LayPage>
