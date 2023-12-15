@@ -9,7 +9,7 @@ const CalenPage = () => {
 
     .c-line {
       margin: auto;
-      height: 100vh;
+      height: 100%;
       width: 2px;
       border-width: 0;
       color: #000;
@@ -21,14 +21,14 @@ const CalenPage = () => {
     position: relative;
     /* display: flex; */
     width: 50%;
-    height: 100vh;
+    /* height: 100vh; */
 
     .calen-inner {
       position: relative;
       display: block;
       width: 70%;
       /* width: 590px; */
-      height: 1000px;
+      height: 800px;
       background-color: #03072e;
       top: 50%;
       left: 50%;
@@ -136,13 +136,13 @@ const CalenPage = () => {
   `;
   const TodoRight = styled.div`
     width: 50%;
-    height: 100vh;
+    /* height: 100vh; */
 
     .todo-inner {
       position: relative;
       display: block;
       width: 70%;
-      height: 1000px;
+      height: 800px;
       /* opacity: 0.3; */
       background: #b6bbc4;
       top: 50%;
@@ -160,6 +160,7 @@ const CalenPage = () => {
       /* background-color: aqua; */
     }
     .header-todo {
+      position: relative;
       height: 130px;
       /* background-color: beige; */
     }
@@ -184,8 +185,15 @@ const CalenPage = () => {
     .header-todo p {
       font-size: 20px;
     }
-    .header-todo hr {
+    .emt-line {
       height: 15px;
+      width: 1px;
+      background-color: #000;
+      color: #0118e3;
+    }
+
+    .todo-line {
+      width: 100%;
     }
 
     .todo-date {
@@ -335,12 +343,12 @@ const CalenPage = () => {
                 <div className="blue-line"></div>
                 <img src="../images/layer.svg" />
                 <p>매우 좋음</p>
-                <hr className="emt-line" />
+                <div className="emt-line"></div>
                 <p>기쁜</p>
               </span>
             </div>
 
-            <hr />
+            <hr className="todo-line" />
 
             <div className="todo-main">
               <ul className="todo-list">
