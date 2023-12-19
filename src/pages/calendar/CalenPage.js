@@ -1,186 +1,109 @@
 import styled from "@emotion/styled";
-
 import React, { useEffect, useState } from "react";
-import { CTWrap, CalenLeft, TodoRight } from "../../styles/calen/calendarstyle";
-import TodoInput from "../../components/calenders/TodoInput";
+import { CalenStyle } from "../../styles/calen/calenstyle";
 
-// 초기 todo 목록
-const initTodoList = [];
+export const CalenPage = () => {
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  // const [currentYear, setCurrentYear] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-
-const CalenPage = () => {
-  const [todoList, setTodoList] = useState(initTodoList);
-  const getTodoListAxio = () => {
-    // 서버에 get 호출해서 전체 목록받기
-    setTodoList([
-      { work: "강아지 밥주기" },
-      { work: "강아지 산책시키기" },
-      { work: "강아지 운동시키기" },
-    ]);
+  // 0은 현재 -1 이전으로 이동
+  const handlePrevMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1),
+    );
   };
-  const handleClickAddTodo = () => {
-    const arr = [...todoList];
-    arr.push({ work: "할일추가해주세요." });
-    setTodoList(arr);
+
+  const handleNextMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1),
+    );
   };
-  useEffect(() => {
-    getTodoListAxio();
-  }, []);
+
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (year, month) => {
+    return new Date(year, month, 1).getDay();
+  };
+
+  const generateDates = () => {
+    const daysInMonth = getDaysInMonth(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+    );
+    const firstDayOfWeek = getFirstDayOfMonth(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+    );
+
+    const datesArray = Array.from(
+      { length: daysInMonth + firstDayOfWeek },
+      (_, i) => {
+        if (i < firstDayOfWeek) {
+          const prevMonthDays = getDaysInMonth(
+            currentMonth.getFullYear(),
+            currentMonth.getMonth() - 1,
+          );
+          return prevMonthDays - firstDayOfWeek + i + 1; // 이전 달의 날짜
+        }
+        return i - firstDayOfWeek + 1; // 현재 달의 날짜
+      },
+    );
+
+    // 다음 달의 날짜 추가
+    const remainingDays = (7 - ((daysInMonth + firstDayOfWeek) % 7)) % 7;
+    for (let i = 0; i < remainingDays; i++) {
+      datesArray.push(i + 1); // 다음 달의 날짜
+    }
+
+    return datesArray.map((day, index) => (
+      <div
+        key={index}
+        className={`day ${day <= 0 ? "prev disable" : "current"}`}
+      >
+        {day > 0 && day}
+      </div>
+    ));
+  };
+
   return (
-    <CTWrap>
-      <CalenLeft>
-        <div className="calen-inner">
-          <div className="calen-header">
-            <div className="month-nav">
-              <button className="month-prev">
-                {/* <img src="./images/iconleft.svg" /> */}
-                <img src="./images/iconleft.svg" />
-              </button>
-              <p className="current-month">12월</p>
-              <button className="month-down">
-                <img src="./images/icondown.svg" />
-              </button>
-
-              <button className="month-next">
-                <img src="./images/iconright.svg" />
-              </button>
-            </div>
-
-            <div className="year-nav">
-              <button className="year-prev">
-                <img src="./images/iconleft.svg" />
-              </button>
-              <p className="current-year">2023</p>
-              <button className="year-down">
-                <img src="./images/icondown.svg" />
-              </button>
-
-              <button className="year-next">
-                <img src="./images/iconright.svg" />
-              </button>
-            </div>
+    <CalenStyle>
+      <div className="left">
+        <div className="calendar">
+          <div className="month">
+            <button className="calen-prev" onClick={handlePrevMonth}>
+              <img src="/images/iconleft.svg" alt="Previous Month" />
+            </button>
+            <div className="date">{`${currentMonth.getFullYear()}년 ${
+              currentMonth.getMonth() + 1
+            }월`}</div>
+            <button className="calen-next" onClick={handleNextMonth}>
+              <img src="/images/iconright.svg" />
+            </button>
           </div>
 
-          <div className="calen-main">
-            <div className="weeks">
-              <div>일</div>
-              <div>월</div>
-              <div>화</div>
-              <div>수</div>
-              <div>목</div>
-              <div>금</div>
-              <div>토</div>
-            </div>
-            <ul className="days">
-              <li>26</li>
-              <li>27</li>
-              <li>28</li>
-              <li>29</li>
-              <li>30</li>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-              <li>11</li>
-              <li>12</li>
-              <li>13</li>
-              <li>14</li>
-              <li>15</li>
-              <li>16</li>
-              <li>17</li>
-              <li>18</li>
-              <li>19</li>
-              <li>20</li>
-              <li>21</li>
-              <li>22</li>
-              <li>23</li>
-              <li>24</li>
-              <li>25</li>
-              <li>26</li>
-              <li>27</li>
-              <li>28</li>
-              <li>29</li>
-              <li>30</li>
-              <li>31</li>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-            </ul>
+          <div className="week">
+            <div>일</div>
+            <div>월</div>
+            <div>화</div>
+            <div>수</div>
+            <div>목</div>
+            <div>금</div>
+            <div>토</div>
           </div>
+          <div className="days">{generateDates()}</div>
         </div>
-      </CalenLeft>
-
-      <hr className="c-line" />
-
-      <TodoRight>
-        <div className="todo-inner">
-          <div className="todo-inin">
-            <div className="header-todo">
-              <p className="todo-date">
-                23.12.08 금요일
-                <br />
-                <button
-                  onClick={() => {
-                    handleClickAddTodo();
-                  }}
-                >
-                  항목추가
-                </button>
-              </p>
-
-              <span>
-                <div className="blue-line"></div>
-                <img src="../images/layer.svg" />
-                <p>매우 좋음</p>
-                <div className="emt-line"></div>
-                <p>기쁜</p>
-              </span>
-            </div>
-
-            <hr className="todo-line" />
-
-            <div className="todo-main">
-              <div
-                style={{
-                  height: "500px",
-                  background: "red",
-                  overflowX: "hidden",
-                  overflowY: "auto",
-                }}
-              >
-                {todoList.map((item, idx) => {
-                  return <TodoInput key={idx} item={item} mode={false} />;
-                })}
-              </div>
-            </div>
-            {/* <ul className="todo-list">
-                <div className="red-line"></div>
-                <p>강아지 밥주기</p>
-                <button>
-                  <img src="./images/deleten.svg" />
-                </button>
-              </ul>
-
-              <ul className="todo-list">
-                <div className="red-line"></div>
-                <p>강아지 밥주기</p>
-                <button>
-                  <img src="./images/deleten.svg" />
-                </button>
-              </ul> */}
-          </div>
+      </div>
+      <div className="center-line"></div>
+      {/* todo만들기 */}
+      <div className="right">
+        <div className="todolist">
+          <div className="today-date"></div>
         </div>
-      </TodoRight>
-    </CTWrap>
+      </div>
+    </CalenStyle>
   );
 };
 
