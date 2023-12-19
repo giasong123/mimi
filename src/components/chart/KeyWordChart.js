@@ -9,7 +9,7 @@ const KeyWordChart = () => {
           <li>
             <img src="/images/sun.svg" alt=""></img>
             <img src="/images/sunbar.svg" alt=""></img>
-            <p>2일</p>
+            <p>일</p>
           </li>
 
           <div className="feeling">

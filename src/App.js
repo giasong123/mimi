@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/" element={<Intro />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/calendar" element={<Calendar />}></Route>
-          {/* <Route path="/chart" element={<Chart />}></Route> */}
+          <Route path="/chart" element={<Chart />}></Route>
           <Route path="/feel" element={<Feel />}></Route>
           <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
         </Routes>
