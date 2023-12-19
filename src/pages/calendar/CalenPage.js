@@ -3,15 +3,31 @@ import React, { useEffect, useState } from "react";
 import { CalenStyle } from "../../styles/calen/calenstyle";
 import { TodoRight } from "../../styles/calen/todostyle";
 import TodoInput from "../../components/calenders/TodoInput";
+import { getTodoIuser } from "../../api/todo/apitodo";
+import { useParams } from "react-router";
 
 const initTodoList = [];
+const initChoiceDate = "";
+const initGetTodo = {
+  emotion: null,
+  emotionTag: null,
+  todos: [],
+};
 export const CalenPage = () => {
+  const param = useParams();
+  console.log(param.iuser);
+  // 선택된 날짜 state
+  const [choiceDate, setChoiceDate] = useState(initChoiceDate);
+  // 선택된 날짜의 API 전달
+  const [getTodo, setGetTodo] = useState(initGetTodo);
+
   const [currentMonth, setCurrentMonth] = useState(new Date());
   // const [currentYear, setCurrentYear] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const [todoList, setTodoList] = useState(initTodoList);
 
+  const today = new Date();
   // 0은 현재 -1 이전으로 이동
   const handlePrevMonth = () => {
     setCurrentMonth(
@@ -69,6 +85,23 @@ export const CalenPage = () => {
       <div
         key={index}
         className={`day ${day <= 0 ? "prev disable" : "current"}`}
+        onClick={() => {
+          // 목록에 보여줄 날짜 Set
+          setChoiceDate(
+            `${currentMonth.getFullYear()}년 ${
+              currentMonth.getMonth() + 1
+            }월 ${day}일`,
+          );
+
+          // 서버에 보내서 todo 목록 얻기
+          getTodoIuser(
+            param.iuser,
+            currentMonth.getFullYear(),
+            currentMonth.getMonth() + 1,
+            day,
+            setGetTodo,
+          );
+        }}
       >
         {day > 0 && day}
       </div>
@@ -104,7 +137,7 @@ export const CalenPage = () => {
             </button>
             <div className="date">{`${currentMonth.getFullYear()}년 ${
               currentMonth.getMonth() + 1
-            }월`}</div>
+            }월 ${selectedDate.getDate()}일`}</div>
             <button className="calen-next" onClick={handleNextMonth}>
               <img src="/images/iconright.svg" />
             </button>
@@ -129,7 +162,11 @@ export const CalenPage = () => {
           <div className="todo-inin">
             <div className="header-todo">
               <p className="todo-date">
-                23.12.08 금요일
+                {choiceDate ? choiceDate : "날짜를 선택주세요."}
+                {/* 23.12.08 금요일 */}
+                {/* {`${currentMonth.getFullYear()}년 ${
+                  currentMonth.getMonth() + 1
+                }월 `} */}
                 <br />
                 <button
                   onClick={() => {

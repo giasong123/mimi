@@ -23,9 +23,9 @@ const Chart = () => {
     <div className="chart-page">
       <div className="main-box">
         <div className="box-inner">
-          {chartData.map(item => (
+          {/* {chartData.map(item => (
             <OneWeekEmo></OneWeekEmo>
-          ))}
+          ))} */}
           <hr></hr>
           <LineChart></LineChart>
           <KeyWordChart></KeyWordChart>
