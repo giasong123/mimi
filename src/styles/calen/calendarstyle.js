@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const CTWrap = styled.div`
+const CTWrap = styled.div`
   position: relative;
   display: flex;
   width: 100%;
@@ -16,7 +16,7 @@ export const CTWrap = styled.div`
     opacity: 0.3;
   }
 `;
-export const CalenLeft = styled.div`
+const CalenLeft = styled.div`
   position: relative;
   /* display: flex; */
   width: 50%;
@@ -133,7 +133,7 @@ opacity: 0.5; */
     opacity: 0.5;
   }
 `;
-export const TodoRight = styled.div`
+const TodoRight = styled.div`
   width: 50%;
   height: 100vh;
 
