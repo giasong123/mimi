@@ -3,32 +3,30 @@ import "../../styles/css/chart.css";
 
 import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";
-import { getChart } from "../../api/emo/chart";
+import { getChart } from "../../api/emo/apichart";
 import OneWeekEmo from "../../components/chart/OneWeekEmo";
 
 const initData = [];
 const Chart = () => {
-  const [chartData, setChartData] = useState(initData);
+  const [chartData, setChartData] = useState([]);
   const getChartAction = () => {
     console.log("자료호출");
-    getChart(setChartData);
+    getChart(5, setChartData);
   };
 
   useEffect(() => {
     console.log("자리 마련");
-    getChart();
+    getChartAction();
   }, []);
 
   return (
     <div className="chart-page">
       <div className="main-box">
         <div className="box-inner">
-          {/* {chartData.map(item => (
-            <OneWeekEmo></OneWeekEmo>
-          ))} */}
+          <OneWeekEmo></OneWeekEmo>
           <hr></hr>
           <LineChart></LineChart>
-          <KeyWordChart></KeyWordChart>
+          <KeyWordChart chartData={chartData}></KeyWordChart>
         </div>
       </div>
     </div>
