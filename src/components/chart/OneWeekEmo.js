@@ -1,4 +1,4 @@
-const OneWeekEmo = () => {
+export const OneWeekEmo = () => {
   return (
     <div className="feel-facebox">
       <div className="feel-title">

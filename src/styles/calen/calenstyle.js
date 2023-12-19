@@ -109,7 +109,7 @@ export const CalenStyle = styled.div`
     position: absolute;
     width: 30%;
     height: 7px;
-    background-color: red;
+    /* background-color: red; */
     border-radius: 30px;
     left: 50%;
     bottom: 40%;
