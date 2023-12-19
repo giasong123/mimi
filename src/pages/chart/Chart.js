@@ -24,7 +24,6 @@ const Chart = () => {
       <div className="main-box">
         <div className="box-inner">
           <OneWeekEmo></OneWeekEmo>
-
           <hr></hr>
           <LineChart></LineChart>
           <KeyWordChart chartData={chartData}></KeyWordChart>
