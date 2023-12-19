@@ -79,11 +79,18 @@
 }
 
 .feel_footer {
-  text-align: center;
+  /* text-align: center; */
+  float: right;
+  margin: 100px;
 }
 .feel_bt {
   position: relative;
   width: 100px;
   height: 50px;
   cursor: pointer;
+  border-radius: 20px;
+}
+
+.feel_bt p {
+  font-size: 20px;
 }
