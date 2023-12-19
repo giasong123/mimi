@@ -375,7 +375,7 @@ const Feel = () => {
               handleClickAdd();
             }}
           >
-            확인
+            <p>확인</p>
           </button>
         )}
       </div>
