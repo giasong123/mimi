@@ -1,6 +1,4 @@
-import React from "react";
-
-export const OneWeekEmo = () => {
+const OneWeekEmo = () => {
   return (
     <div className="feel-facebox">
       <div className="feel-title">
