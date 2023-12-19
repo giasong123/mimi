@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { CalenStyle } from "../../styles/calen/calenstyle";
+import { TodoRight } from "../../styles/calen/todostyle";
+import TodoInput from "../../components/calenders/TodoInput";
 
+const initTodoList = [];
 export const CalenPage = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   // const [currentYear, setCurrentYear] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const [todoList, setTodoList] = useState(initTodoList);
 
   // 0은 현재 -1 이전으로 이동
   const handlePrevMonth = () => {
@@ -20,10 +25,12 @@ export const CalenPage = () => {
     );
   };
 
+  // 주어진 연도와 월에 해당하는 월의 총 일수/ +1, 0 현재 월의 마지막날
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
 
+  // 연도와 월의 1일
   const getFirstDayOfMonth = (year, month) => {
     return new Date(year, month, 1).getDay();
   };
@@ -68,6 +75,25 @@ export const CalenPage = () => {
     ));
   };
 
+  // 투두리스트
+
+  const getTodoListAxio = () => {
+    // 서버에 get 호출해서 전체 목록받기
+    setTodoList([
+      { work: "강아지 밥주기" },
+      { work: "강아지 산책시키기" },
+      { work: "강아지 운동시키기" },
+    ]);
+  };
+  const handleClickAddTodo = () => {
+    const arr = [...todoList];
+    arr.push({ work: "할일추가해주세요." });
+    setTodoList(arr);
+  };
+  useEffect(() => {
+    getTodoListAxio();
+  }, []);
+
   return (
     <CalenStyle>
       <div className="left">
@@ -97,12 +123,66 @@ export const CalenPage = () => {
         </div>
       </div>
       <div className="center-line"></div>
-      {/* todo만들기 */}
-      <div className="right">
-        <div className="todolist">
-          <div className="today-date"></div>
+
+      <TodoRight>
+        <div className="todo-inner">
+          <div className="todo-inin">
+            <div className="header-todo">
+              <p className="todo-date">
+                23.12.08 금요일
+                <br />
+                <button
+                  onClick={() => {
+                    handleClickAddTodo();
+                  }}
+                >
+                  항목추가
+                </button>
+              </p>
+
+              <span>
+                <div className="blue-line"></div>
+                <img src="../images/layer.svg" />
+                <p>매우 좋음</p>
+                <hr className="emt-line" />
+                <p>기쁜</p>
+              </span>
+            </div>
+
+            <hr />
+
+            <div className="todo-main">
+              <div
+                style={{
+                  height: "500px",
+                  background: "red",
+                  overflowX: "hidden",
+                  overflowY: "auto",
+                }}
+              >
+                {initTodoList.map((item, idx) => {
+                  return <TodoInput key={idx} item={item} mode={false} />;
+                })}
+              </div>
+            </div>
+            {/* <ul className="todo-list">
+                <div className="red-line"></div>
+                <p>강아지 밥주기</p>
+                <button>
+                  <img src="./images/deleten.svg" />
+                </button>
+              </ul>
+
+              <ul className="todo-list">
+                <div className="red-line"></div>
+                <p>강아지 밥주기</p>
+                <button>
+                  <img src="./images/deleten.svg" />
+                </button>
+              </ul> */}
+          </div>
         </div>
-      </div>
+      </TodoRight>
     </CalenStyle>
   );
 };

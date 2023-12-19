@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/css/chart.css";
-import OneWeekEmo from "../../components/chart/OneWeekEmo";
+
 import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";
 import { getChart } from "../../api/emo/chart";
+import OneWeekEmo from "../../components/chart/OneWeekEmo";
 
 const initData = [];
 const Chart = () => {
