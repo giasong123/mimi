@@ -30,12 +30,12 @@
   position: relative;
   width: 100%;
   padding: 50px;
-  column-count:3
-  
+ 
 }
 
 .service_fe p {
   position: relative;
+  font-size: 25px;
 }
 
 .service_fe ul{
@@ -48,9 +48,12 @@ font-size: 20px;
   position: relative;
   
 } 
+.a_tag{
+  position: relative;
+  color: #fff;
+}
 
-
-.service_fe::after {
+/* .service_fe::after {
   content: "";
   position: absolute;
   display: block;
@@ -61,13 +64,17 @@ font-size: 20px;
   height: 2px;
   background: #fff;
   opacity: 0.7;
-}
+} */
 .service_be {
   width: 100%;
   padding: 50px;
-  column-count:3
-  
 }
+
+.service_be p{
+  position: relative;
+  font-size: 25px;
+}
+
 
 .service_be ul{
   position: relative;
