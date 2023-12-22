@@ -58,25 +58,37 @@
 }
 .feel_very_good {
   position: relative;
-  display: flex;
-  gap: 25px;
-  align-items: center;
-  justify-content: center;
+  display: block;;
+  text-align: center;
+  
+   
+}
+.feel_very_good img{
+  position: relative;
+  margin: 10px;
 }
 
 .feel_soso {
   position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: block;
+  text-align: center;
 }
+.feel_soso img{
+  position: relative;
+  margin: 10px;
+}
+
+
 
 .feel_bad {
   position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: block;
+  text-align: center;
 }
+.feel_bad img{
+  margin: 10px;
+}
+
 
 .feel_footer {
   /* text-align: center; */
