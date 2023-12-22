@@ -110,7 +110,7 @@ const Intro = () => {
               <option value="">성별을 선택해주세요</option>
               <option value="0">여자</option>
               <option value="1">남자</option>
-              <option value="2">선택안함</option>
+              <option value="2">중성</option>
             </select>
             <br />
 
