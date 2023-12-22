@@ -1,5 +1,8 @@
 .wrap {
   position: relative;
+  min-width: 1024px;
+  min-height: 960px;
+ 
 }
 .header {
   position: relative;
@@ -62,6 +65,7 @@
   gap: 25px;
   align-items: center;
   justify-content: center;
+  
 }
 
 .feel_soso {
