@@ -1,106 +1,124 @@
 import axios from "axios";
 import { SERVER_URL } from "../config";
 
-export const getTodoIuser = async (iuser, year, month, day, setGetTodo) => {
+export const getTodoIuser = async (
+  iuser,
+  year,
+  month,
+  day,
+  setTodoList,
+  setCallImageId,
+  setCallImageStr,
+) => {
   console.log("getTodoIuser");
 
   try {
-    // /api/todo/7?y=2023&m=12&d=12/
-    const res = await axios.get(
-      `/api/todo/${7}?y=${2023}&m=${12}&d=${21}`,
-      // `/api/todo/${iuser}?iuser=${iuser}&y=${year}&m=${month}&d=${day}`,
-    );
+    const query = `/api/todo/${iuser}?y=${year}&m=${month}&d=${day}`;
+    // const query = `/api/todo/${7}?y=${2023}&m=${12}&d=${21}`;
+    // /api/todo/7?y=2023&m=12&d=21/
+    const res = await axios.get(query);
     console.log(res.data);
-    setGetTodo(res.data);
+    const resStatus = res.status.toString();
+    if (resStatus.charAt(0) === "2") {
+      setTodoList(res.data.todos);
+      setCallImageId(res.data.emotionGrade);
+      setCallImageStr(res.data.emotionTag);
+    } else {
+      // 프론트는 요청을 잘못했나?
+      // 백엔드에서 값의 종류나 단어를 바꿨나?
+      alert("잘못된 요청입니다.");
+    }
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
     // 샘플 즉, 서버 오류시 샘플 데이터로 작업하기
     // {"emotion":null,"emotionTag":null,"todos":[]}
-    setGetTodo(
+
+    setCallImageId(5);
+    setCallImageStr("기쁜");
+    setTodoList([
       {
-        emotionGrade: 5,
-        emotionTag: "감사한",
-        todos: [
-          {
-            itodo: 1,
-            todoContent: "울랄부라 1",
-          },
-          {
-            itodo: 2,
-            todoContent: "울랄부라 2",
-          },
-        ],
+        itodo: 130,
+        todoContent: "Morbi non lectus.",
+        startDate: "2023-12-21",
+        endDate: "2023-12-21",
+        startTime: "00:00:00",
+        endTime: "23:59:59",
+        repeatEndDate: null,
+        repeatType: null,
+        repeatNum: null,
       },
       {
-        emotionGrade: 5,
-        emotionTag: "행복한",
-        todos: [
-          {
-            itodo: 1,
-            todoContent: "1울랄ㄱㄱ부라 1",
-          },
-          {
-            itodo: 2,
-            todoContent: "1울랄부ㅈㅈ라 2",
-          },
-        ],
+        itodo: 187,
+        todoContent:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        startDate: "2023-12-21",
+        endDate: "2023-12-21",
+        startTime: "00:00:00",
+        endTime: "23:59:59",
+        repeatEndDate: null,
+        repeatType: null,
+        repeatNum: null,
       },
-      {
-        emotionGrade: 5,
-        emotionTag: "감사한",
-        todos: [
-          {
-            itodo: 1,
-            todoContent: "2울랄부라 1",
-          },
-          {
-            itodo: 2,
-            todoContent: "2울랄부라 2",
-          },
-        ],
-      },
-    );
+    ]);
   }
 };
 
-export const patchTodo = async obj => {
+export const patchTodo = async (obj, patchSuccess) => {
   console.log("patchTodo");
   try {
     const res = await axios.patch("/api/todo", obj);
     console.log(res.data);
+    const resStatus = res.status.toString();
+    if (resStatus.charAt(0) === "2") {
+      patchSuccess(res.data);
+    } else {
+      // 프론트는 요청을 잘못했나?
+      // 백엔드에서 값의 종류나 단어를 바꿨나?
+      alert("잘못된 요청입니다.");
+    }
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
   }
 };
 
-export const deleteTodo = async (iuser, itodo) => {
+export const deleteTodo = async (iuser, itodo, deleteSuccess) => {
   console.log("deleteTodo");
   try {
     // /{iuser}/{itodo}?iuser=1&itodo=1
     const res = await axios.delete(
       // `/api/todo/${iuser}/${itodo}?iuser=${iuser}&itodo=${itodo}`,
-      `api/todo/${iuser}/${itodo}`,
+      `/api/todo/${iuser}/${itodo}`,
     );
     console.log(res.data);
+    const resStatus = res.status.toString();
+    if (resStatus.charAt(0) === "2") {
+      deleteSuccess(res.data);
+    } else {
+      // 프론트는 요청을 잘못했나?
+      // 백엔드에서 값의 종류나 단어를 바꿨나?
+      alert("잘못된 요청입니다.");
+    }
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
   }
 };
 
-export const postTodo = async (iuser, todoContent, startDate, endDate) => {
+export const postTodo = async (obj, postTodoSuccess) => {
   console.log("postTodo");
-  const obj = {
-    iuser: 1,
-    todoContent: "todoContent",
-    startDate: "2023-12-21",
-    endDate: "2023-12-21",
-  };
   try {
     const res = await axios.post(`/api/todo`, obj);
     console.log(res.data);
+    const resStatus = res.status.toString();
+    if (resStatus.charAt(0) === "2") {
+      postTodoSuccess(res.data.result);
+    } else {
+      // 프론트는 요청을 잘못했나?
+      // 백엔드에서 값의 종류나 단어를 바꿨나?
+      alert("잘못된 요청입니다.");
+    }
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");

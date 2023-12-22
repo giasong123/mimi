@@ -13,7 +13,8 @@ const initData = {
   normal: 0,
   bad: 0,
 };
-const Chart = () => {
+const Chart = props => {
+  console.log("iuser: ", props.iuserInfo.iuser);
   // 화면에 보여줄 서버 데이터 관리
   const [chartData, setChartData] = useState(initData);
   // 사용자 번호

@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const feelInitPoint = 0;
 const feelInitMood = "";
 
-const Feel = () => {
+const Feel = props => {
+  console.log("iuser: ", props.iuserInfo.iuser);
   // path 이동하기
   const navigate = useNavigate();
   const nowIcon = useRef(null);
@@ -42,7 +43,8 @@ const Feel = () => {
     event.target.style.padding = "0 10px";
 
     setFeelMood(mood);
-    setFeelMood(true);
+
+    // setFeelMood(true);
   };
 
   // 자료를 백엔드로 보내기
@@ -56,7 +58,7 @@ const Feel = () => {
       return;
     }
 
-    postEmo(1, feelPoint, feelMood, failEmo, successNext);
+    postEmo(props.iuserInfo.iuser, feelPoint, feelMood, failEmo, successNext);
     // console.log("기분", feelPoint);
     // console.log("키워드", feelMood);
   };

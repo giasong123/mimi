@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/about/About";
-import Calendar from "./pages/calendar/CalenPage";
+// import Calendar from "./pages/calendar/CalenPage";
+import Calendar from "./pages/calendar/CalendarPageNew";
+// import Calendar2 from "./pages/calendar/CalendarPageNew";
 import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
@@ -9,24 +11,40 @@ import { Wrap } from "./styles/basic";
 import Header from "./components/Header";
 import { calc } from "antd/es/theme/internal";
 
+const initUserInfo = { iuser: 0, result: 0, userNickName: "" };
 const App = () => {
-  const [iuser, setIuser] = useState(7);
+  const [iuserInfo, setIuserInfo] = useState(initUserInfo);
   const mainStyle = {
     width: "calc(100% - 114px)",
   };
   return (
     <Wrap>
-      <Header></Header>
+      <Header iuserInfo={iuserInfo} setIuser={setIuserInfo}></Header>
       <main style={mainStyle}>
         <Routes>
-          <Route path="/" element={<Intro />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/calendar/:iuser" element={<Calendar />}></Route>
-          <Route path="/calendar" element={<Calendar />}></Route>
-          <Route path="/chart" element={<Chart />}></Route>
+          {iuserInfo.iuser === 0 ? (
+            <Route
+              path="/"
+              element={<Intro iuserInfo={iuserInfo} setIuser={setIuserInfo} />}
+            />
+          ) : (
+            <Route path="/" element={<Calendar iuserInfo={iuserInfo} />} />
+          )}
 
-          <Route path="/feel" element={<Feel />}></Route>
-          <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
+          <Route path="/about" element={<About iuserInfo={iuserInfo} />} />
+          <Route
+            path="/calendar/:iuser"
+            element={<Calendar iuserInfo={iuserInfo} />}
+          />
+
+          <Route
+            path="/calendar2"
+            element={<Calendar iuserInfo={iuserInfo} />}
+          />
+
+          <Route path="/chart" element={<Chart iuserInfo={iuserInfo} />} />
+          <Route path="/feel" element={<Feel iuserInfo={iuserInfo} />} />
+          <Route path="*" element={<h1>파일이없네요.</h1>} />
         </Routes>
       </main>
     </Wrap>

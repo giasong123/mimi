@@ -28,7 +28,7 @@ export const CalenPage = () => {
   const [choiceDate, setChoiceDate] = useState(initChoiceDate);
   // 선택된 날짜의 API 전달
   const [getTodo, setGetTodo] = useState(initGetTodo);
-  const [postTodo, setPostTodo] = useState(initGetTodo);
+  const [postTodo, setPostTodo] = useState(initPostTodo);
 
   const [todoList, setTodoList] = useState(initTodoList);
 
