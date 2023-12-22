@@ -11,11 +11,19 @@ export const getChart = async (iuser, setChartData) => {
     setChartData({
       emoChart: [
         {
+<<<<<<< HEAD
           emotionGrade: 3,
           dayOfTheWeek: 0,
         },
         {
           emotionGrade: 1,
+=======
+          emotionGrade: 5,
+          dayOfTheWeek: 0,
+        },
+        {
+          emotionGrade: 3,
+>>>>>>> e50579b6f9d599ca419c99cefcdbe0e5ba0100af
           dayOfTheWeek: 1,
         },
         {
@@ -35,6 +43,7 @@ export const getChart = async (iuser, setChartData) => {
           dayOfTheWeek: 5,
         },
         {
+<<<<<<< HEAD
           emotionGrade: 1,
           dayOfTheWeek: 6,
         },
@@ -42,6 +51,15 @@ export const getChart = async (iuser, setChartData) => {
       good: 3,
       normal: 4,
       bad: 0,
+=======
+          emotionGrade: 5,
+          dayOfTheWeek: 6,
+        },
+      ],
+      good: 1,
+      normal: 5,
+      bad: 1,
+>>>>>>> e50579b6f9d599ca419c99cefcdbe0e5ba0100af
     });
   }
 };

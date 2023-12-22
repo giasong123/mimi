@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/about/About";
 import Calendar from "./pages/calendar/CalenPage";
@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import { calc } from "antd/es/theme/internal";
 
 const App = () => {
+  const [iuser, setIuser] = useState(7);
   const mainStyle = {
     width: "calc(100% - 114px)",
   };
@@ -21,11 +22,11 @@ const App = () => {
           <Route path="/" element={<Intro />}></Route>
           <Route path="/about" element={<About />}></Route>
 
-
           <Route path="/calendar/:iuser" element={<Calendar />}></Route>
           {/* <Route path="/chart" element={<Chart />}></Route> */}
-         <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/calendar" element={<Calendar />}></Route>
           <Route path="/chart" element={<Chart />}></Route>
+
           <Route path="/feel" element={<Feel />}></Route>
           <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
         </Routes>

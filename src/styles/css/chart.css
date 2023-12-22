@@ -8,6 +8,9 @@
   min-width: 1024px;
   min-height: 960px;
   overflow-y: hidden;
+  min-width: 1024px;
+  min-height: 960px;
+  overflow-y: hidden;
 }
 
 .main-box {
@@ -46,6 +49,7 @@
 .feel-title p {
   font-size: 30px;
   font-family: "S-CoreDream-3Light";
+  width: 490px;
 }
 .feel-face {
   position: relative;
@@ -136,18 +140,20 @@ hr {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  gap: 20px;
+  gap: 10px;
+  padding-top: 10px;
 }
 .feel-keywordbox li .keyword_left img {
   width: 65px;
   height: 65px;
 }
 .feel-keywordbox li .keyword_left p {
-  font-size: 22px;
+  font-size: 15px;
 }
 .feel-keywordbox li .keyword_right {
   width: 80%;
   display: flex;
+  position: relative;
 }
 .feel-keywordbox li .keyword_right span {
   display: block;
@@ -157,7 +163,12 @@ hr {
   margin-top: 25px;
 }
 .feel-keywordbox li .keyword_right p {
-  font-size: 22px;
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: auto;
+  left: 85%;
+  top: 20%;
 }
 .barGood {
   background-color: #ffac33;
