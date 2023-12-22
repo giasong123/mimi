@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const LayPage = styled.div`
     width: 114px;
-    height: 100vh;
+    min-height: 960px;
+    display: flex;
+    overflow-y: hidden;
     /* background-color: hotpink; */
     .nav {
       position: relative;
