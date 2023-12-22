@@ -91,7 +91,7 @@ const Feel = () => {
         <ul>
           <li>
             <img
-              src="./images/layer.svg"
+              src="./images/layer0.svg"
               alt=""
               onClick={e => {
                 handleClick(1, e);
@@ -174,6 +174,7 @@ const Feel = () => {
                   handleClickMood("기쁜", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/hopeful.svg"
                 alt=""
@@ -245,6 +246,7 @@ const Feel = () => {
                   handleClickMood("당황한", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/insensitive.svg"
                 alt=""
@@ -323,6 +325,7 @@ const Feel = () => {
                   handleClickMood("외로운", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/mortifying.svg"
                 alt=""
