@@ -20,6 +20,9 @@ img {
 }
 html {
   font-size: 10px;
+  min-width: 1024px;
+  min-height: 960px;
+  overflow: hidden;
 }
 body {
   font-family: "Noto Sans KR", sans-serif;
