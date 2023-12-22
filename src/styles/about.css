@@ -1,0 +1,80 @@
+.aboutwrap {
+  position: relative;
+  display: flex;
+  min-width: 1024px;
+  min-height: 960px;
+  /* background: red; */
+  background-image: linear-gradient(to right, #fff 50%, #00042d 50%);
+}
+
+.service {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.service_movie {
+  position: relative;
+  text-align: center;
+}
+
+.service_introduction {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  color: #ffffff;
+}
+.service_fe {
+  position: relative;
+  width: 100%;
+  padding: 50px;
+  column-count:3
+  
+}
+
+.service_fe p {
+  position: relative;
+}
+
+.service_fe ul{
+position: relative;
+font-size: 20px;
+
+
+}
+.service_fe li{
+  position: relative;
+  
+} 
+
+
+.service_fe::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 2px;
+  background: #fff;
+  opacity: 0.7;
+}
+.service_be {
+  width: 100%;
+  padding: 50px;
+  column-count:3
+  
+}
+
+.service_be ul{
+  position: relative;
+  font-size: 20px;
+
+}
+
+.service_be li{
+  position: relative;
+}

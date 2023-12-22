@@ -42,7 +42,7 @@ const Feel = () => {
     event.target.style.padding = "0 10px";
 
     setFeelMood(mood);
-    setFeelMood(true);
+    setSelectMood(true);
   };
 
   // 자료를 백엔드로 보내기
@@ -173,12 +173,12 @@ const Feel = () => {
                 onClick={e => {
                   handleClickMood("기쁜", e);
                 }}
-              />
+              />  
               <img
                 src="./images/hopeful.svg"
                 alt=""
                 onClick={e => {
-                  handleClickMood("희망한", e);
+                  handleClickMood("희망찬", e);
                 }}
               />
               <img

@@ -7,7 +7,6 @@ import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
 import { Wrap } from "./styles/basic";
 import Header from "./components/Header";
-import { calc } from "antd/es/theme/internal";
 
 const App = () => {
   const mainStyle = {
@@ -20,11 +19,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Intro />}></Route>
           <Route path="/about" element={<About />}></Route>
-
-
           <Route path="/calendar/:iuser" element={<Calendar />}></Route>
           {/* <Route path="/chart" element={<Chart />}></Route> */}
-         <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/calendar" element={<Calendar />}></Route>
           <Route path="/chart" element={<Chart />}></Route>
           <Route path="/feel" element={<Feel />}></Route>
           <Route path="*" element={<h1>파일이없네요.</h1>}></Route>
