@@ -1,17 +1,39 @@
 import React, { useState } from "react";
+import "../../styles/calen/todostyle";
+import styled from "@emotion/styled";
+import { patchTodo } from "../../api/todo/apitodo";
 
 const TodoInput = props => {
   const item = props.item;
-  const [memo, setMemo] = useState(item.work);
+  console.log(item);
+  const [memo, setMemo] = useState(item.todoContent);
   const [edit, setEdit] = useState(props.mode);
-  const handleClickEdit = _gogo => {
-    setEdit(_gogo);
+
+  const handleClickEdit = _수정완료 => {
+    // 수정 내용 완료
+    const obj = {
+      iuser: 1,
+      itodo: item.itodo,
+      todoContent: memo,
+    };
+    patchTodo(obj);
+    // 수정완료
+    setEdit(_수정완료);
   };
+
   const handleOnChangeMemo = e => {
     setMemo(e.target.value);
   };
+
+  const handelDelete = () => {
+    if (props.onDelete) {
+      // onDelete 함수를 호출하여 아이템 삭제
+      props.onDelete(item.itodo); // 여기서 item.id는 삭제할 항목의 고유 식별자일 것입니다.
+    }
+  };
+
   return (
-    <ul className="todo-list">
+    <div className="todo-list">
       <div className="red-line"></div>
       <p>
         {edit ? (
@@ -30,13 +52,6 @@ const TodoInput = props => {
             >
               완료
             </button>
-            <button
-              onClick={() => {
-                handleClickEdit(true);
-              }}
-            >
-              취소
-            </button>
           </>
         ) : (
           <>
@@ -47,13 +62,21 @@ const TodoInput = props => {
             >
               {memo}
             </span>
-            <button>
-              <img src="./images/deleten.svg" />
+            <button
+              onClick={() => {
+                handelDelete();
+              }}
+              className="delet-bt"
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              <img src="/images/deleten.svg" alt="Delete" />
             </button>
           </>
         )}
       </p>
-    </ul>
+    </div>
   );
 };
 
