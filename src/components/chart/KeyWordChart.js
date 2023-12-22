@@ -1,4 +1,21 @@
-const KeyWordChart = () => {
+import { useEffect, useRef } from "react";
+
+const KeyWordChart = props => {
+  const good = props.good;
+  const normal = props.normal;
+  const bad = props.bad;
+  const step = 100 / 7;
+
+  const goodRef = useRef(null);
+  const normalRef = useRef(null);
+  const badRef = useRef(null);
+
+  useEffect(() => {
+    goodRef.current.style.width = step * good + "%";
+    normalRef.current.style.width = step * normal + "%";
+    badRef.current.style.width = step * bad + "%";
+  });
+
   return (
     <div className="feel-keywordbox">
       <div className="keyword-title">
@@ -7,32 +24,46 @@ const KeyWordChart = () => {
       <div className="keyword-inner">
         <ul>
           <li>
-            <img src="/images/sun.svg" alt=""></img>
-            <img src="/images/sunbar.svg" alt=""></img>
-            <p>일</p>
+            <div className="keyword_left">
+              <div>
+                <img src="/images/sun.svg" alt=""></img>
+              </div>
+              <p>긍정</p>
+            </div>
+            <div className="keyword_right">
+              <span className="barGood" ref={goodRef}></span>
+              {/* <img src="/images/sunbar.svg" alt="" ref={goodRef} /> */}
+              <p>{good}일</p>
+            </div>
           </li>
 
-          <div className="feeling">
-            <p>긍정</p>
-          </div>
-
-          <li className="cloud">
-            <img src="/images/cloud.svg" alt=""></img>
-            <img src="/images/cloudbar.svg" alt=""></img>
-            <p>3일</p>
+          <li>
+            <div className="keyword_left">
+              <div>
+                <img src="/images/cloud.svg" alt=""></img>
+              </div>
+              <p>보통</p>
+            </div>
+            <div className="keyword_right">
+              <span className="barNormal" ref={normalRef}></span>
+              {/* <img src="/images/cloudbar.svg" alt="" ref={normalRef} /> */}
+              <p>{normal}일</p>
+            </div>
           </li>
-          <div className="feeling">
-            <p>보통</p>
-          </div>
 
-          <li className="rain">
-            <img src="/images/rain.svg" alt=""></img>
-            <img src="/images/rainbar.svg" alt=""></img>
-            <p>2일</p>
+          <li>
+            <div className="keyword_left">
+              <div>
+                <img src="/images/rain.svg" alt=""></img>
+              </div>
+              <p>부정</p>
+            </div>
+            <div className="keyword_right">
+              <span className="barBad" ref={badRef}></span>
+              {/* <img src="/images/rainbar.svg" alt="" ref={badRef} /> */}
+              <p>{bad}일</p>
+            </div>
           </li>
-          <div className="feeling">
-            <p>부정</p>
-          </div>
         </ul>
       </div>
     </div>
