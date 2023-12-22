@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/about.css";
 
+
+
 const About = () => {
   return (
     <div className="aboutwrap">
@@ -76,6 +78,7 @@ const About = () => {
             <hr/>
             <li>이름: 노혜선</li>
             <li>담당파트:유저</li>
+          
           </ul>
         </div>
       </div>
