@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/about.css";
-const About = () => {
+const About = props => {
+  console.log("iuser: ", props.iuserInfo.iuser);
   return (
     <div className="aboutwrap">
       <div className="service">

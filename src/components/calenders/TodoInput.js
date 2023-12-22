@@ -5,20 +5,27 @@ import { patchTodo } from "../../api/todo/apitodo";
 
 const TodoInput = props => {
   const item = props.item;
-  console.log(item);
+  // console.log(item);
   const [memo, setMemo] = useState(item.todoContent);
   const [edit, setEdit] = useState(props.mode);
 
   const handleClickEdit = _수정완료 => {
+    if (_수정완료) {
+      setEdit(true);
+    } else {
+      const obj = {
+        iuser: props.iuserInfo.iuser,
+        itodo: item.itodo,
+        todoContent: memo,
+      };
+      patchTodo(obj, patchSuccess);
+    }
     // 수정 내용 완료
-    const obj = {
-      iuser: 1,
-      itodo: item.itodo,
-      todoContent: memo,
-    };
-    patchTodo(obj);
+    // if(_수정완료 === false)
+  };
+  const patchSuccess = () => {
     // 수정완료
-    setEdit(_수정완료);
+    setEdit(false);
   };
 
   const handleOnChangeMemo = e => {
