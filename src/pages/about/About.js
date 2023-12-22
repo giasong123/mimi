@@ -49,7 +49,7 @@ const about = () => {
                 href="https://github.com/giasong123/mimi.git"
                 className="a_tag"
               >
-                깃허브
+                깃허브가기
               </a>
             </li>
 
