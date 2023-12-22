@@ -1,13 +1,14 @@
 import styled from "@emotion/styled";
 
 export const CalenStyle = styled.div`
-  width: 100%;
-  height: 100vh;
+  min-width: 1024px;
+  min-height: 960px;
   display: flex;
+  overflow-y: hidden;
 
   .left {
     width: 50%;
-    height: 100%;
+    /* height: 100%; */
     background-color: aqua;
   }
   .calendar {

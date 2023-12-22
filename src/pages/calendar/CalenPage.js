@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CalenStyle } from "../../styles/calen/calenstyle";
 import { TodoRight } from "../../styles/calen/todostyle";
 import TodoInput from "../../components/calenders/TodoInput";
-import { getTodoIuser } from "../../api/todo/apitodo";
+import { deleteTodo, getTodoIuser } from "../../api/todo/apitodo";
 import { useParams } from "react-router";
 
 const initTodoList = [];
@@ -13,19 +13,28 @@ const initGetTodo = {
   emotionTag: null,
   todos: [],
 };
+const initPostTodo = {
+  iuser: 7,
+  todoContent: "todoContent",
+  startDate: "2023-12-20",
+  endDate: "2023-12-20",
+};
 export const CalenPage = () => {
+  const { iuser, itodo } = useParams();
+
   const param = useParams();
   console.log(param.iuser);
   // 선택된 날짜 state
   const [choiceDate, setChoiceDate] = useState(initChoiceDate);
   // 선택된 날짜의 API 전달
   const [getTodo, setGetTodo] = useState(initGetTodo);
+  const [postTodo, setPostTodo] = useState(initGetTodo);
+
+  const [todoList, setTodoList] = useState(initTodoList);
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
   // const [currentYear, setCurrentYear] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const [todoList, setTodoList] = useState(initTodoList);
 
   const today = new Date();
   // 0은 현재 -1 이전으로 이동
@@ -109,24 +118,53 @@ export const CalenPage = () => {
   };
 
   // 투두리스트
+  const emoImages = [
+    `${process.env.PUBLIC_URL}/images/layer1.svg`,
+    `${process.env.PUBLIC_URL}/images/layer2.svg`,
+    `${process.env.PUBLIC_URL}/images/layer3.svg`,
+    `${process.env.PUBLIC_URL}/images/layer4.svg`,
+    `${process.env.PUBLIC_URL}/images/layer5.svg`,
+  ];
+  const callImageId = getTodo.emotionGrade;
 
-  const getTodoListAxio = () => {
-    // 서버에 get 호출해서 전체 목록받기
-    setTodoList([
-      { work: "강아지 밥주기" },
-      { work: "강아지 산책시키기" },
-      { work: "강아지 운동시키기" },
-    ]);
-  };
+  // const getTodoListAxio = () => {
+  //   // 서버에 get 호출해서 전체 목록받기
+  //   setTodoList([
+  //     { iuser: iuser, work: "강아지 밥주기" },
+  //     { work: "강아지 산책시키기" },
+  //     { work: "강아지 운동시키기" },
+  //   ]);
+  // };
+
+  // const postTodoAddAxio= (){
+  //   const list={
+  //     iuser:{iuser},
+  //     todoContent:"",
+  //     startDate:currentMonth.toISOString().split("T")[0],
+  //     endDate:currentMonth.toISOString().split("T")[0],
+  //   };
+  //   postTodoAdd(list,setGetTodo)
+  // }
   const handleClickAddTodo = () => {
-    const arr = [...todoList];
-    arr.push({ work: "할일추가해주세요." });
-    setTodoList(arr);
+    if (todoList.length < 10) {
+      const arr = [...todoList];
+      arr.push({
+        itodo: todoList.length + 1,
+        todoContent: "할일추가해주세요",
+      });
+      setTodoList(arr);
+      console.log(arr);
+    } else {
+      alert("리스트 추가는 10개까지 입니다.");
+    }
   };
-  useEffect(() => {
-    getTodoListAxio();
-  }, []);
 
+  const handleDeleteTodo = item => {
+    console.log(handleDeleteTodo);
+    deleteTodo(iuser, itodo, item);
+    // setTodoList();
+  };
+  console.log(getTodo.emotionGrade);
   return (
     <CalenStyle>
       <div className="left">
@@ -167,56 +205,63 @@ export const CalenPage = () => {
                 {/* {`${currentMonth.getFullYear()}년 ${
                   currentMonth.getMonth() + 1
                 }월 `} */}
-                <br />
-                <button
-                  onClick={() => {
-                    handleClickAddTodo();
-                  }}
-                >
-                  항목추가
+
+                <button className="plus-list-bt" onClick={handleClickAddTodo}>
+                  +
                 </button>
               </p>
 
-              <span>
+              <span className="print-emo">
                 <div className="blue-line"></div>
-                <img src="../images/layer.svg" />
-                <p>매우 좋음</p>
-                <hr className="emt-line" />
-                <p>기쁜</p>
+                <img
+                  src={`/images/layer${getTodo.emotionGrade - 1}.svg`}
+                  alt={`${process.env.PUBLIC_URL}/images/layer${getTodo.emotionGrade}.svg`}
+                />
+                <p>{getTodo.emotionTag}</p>
+                {/* <div className="emt-line"></div> */}
+                {/* <p>{getTodo.hasTodo}</p> */}
               </span>
             </div>
-
-            <hr />
+            <div className="hr-center"></div>
 
             <div className="todo-main">
               <div
                 style={{
-                  height: "500px",
-                  background: "red",
+                  // height: "500px",
+                  // background: "red",
                   overflowX: "hidden",
                   overflowY: "auto",
                 }}
               >
-                {initTodoList.map((item, idx) => {
-                  return <TodoInput key={idx} item={item} mode={false} />;
+                {getTodo.todos.map((item, idx) => {
+                  return (
+                    <TodoInput
+                      key={idx}
+                      item={item}
+                      mode={false}
+                      onDelete={() => {
+                        handleDeleteTodo(item);
+                      }}
+                    />
+                  );
                 })}
               </div>
             </div>
             {/* <ul className="todo-list">
-                <div className="red-line"></div>
-                <p>강아지 밥주기</p>
-                <button>
-                  <img src="./images/deleten.svg" />
-                </button>
-              </ul>
+              <div className="red-line"></div>
+              <p>강아지 밥주기</p>
+            </ul>
+            <button className="delet-bt">
+              <img src="./images/deleten.svg" />
+            </button>
 
-              <ul className="todo-list">
-                <div className="red-line"></div>
-                <p>강아지 밥주기</p>
-                <button>
-                  <img src="./images/deleten.svg" />
-                </button>
-              </ul> */}
+            <ul className="todo-list">
+              <div className="red-line"></div>
+              <p>강아지 밥주기</p>
+              <button>
+                <img src="./images/deleten.svg" />
+              </button>
+            </ul> */}
           </div>
         </div>
       </TodoRight>
