@@ -32,13 +32,13 @@ const App = () => {
           )}
 
           <Route path="/about" element={<About iuserInfo={iuserInfo} />} />
-          <Route
+          {/* <Route
             path="/calendar/:iuser"
             element={<Calendar iuserInfo={iuserInfo} />}
-          />
+          /> */}
 
           <Route
-            path="/calendar2"
+            path="/calendar"
             element={<Calendar iuserInfo={iuserInfo} />}
           />
 
