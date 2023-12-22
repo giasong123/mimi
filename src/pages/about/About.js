@@ -3,10 +3,10 @@ import "../../styles/about.css";
 
 const About = props => {
   console.log("iuser: ", props.iuserInfo.iuser);
+}
 
 
-
-const About = () => {
+const about = () => {
 
   return (
     <div className="aboutwrap">
@@ -90,4 +90,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default about;
