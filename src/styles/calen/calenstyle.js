@@ -7,9 +7,10 @@ export const CalenStyle = styled.div`
   overflow-y: hidden;
 
   .left {
-    width: 50%;
+    width: 40%;
     /* height: 100%; */
     background-color: aqua;
+    margin: auto;
   }
   .calendar {
     position: relative;
@@ -120,6 +121,8 @@ export const CalenStyle = styled.div`
   .center-line {
     width: 2px;
     height: 100%;
-    background-color: red;
+    /* background-color: red; */
+    background: #00042d;
+    opacity: 0.5;
   }
 `;

@@ -25,14 +25,30 @@ const App = () => {
       <Header />
       <main style={mainStyle}>
         <Routes>
-          <Route path="/" element={<Intro />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/calendar/:iuser" element={<Calendar />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/chart" element={<Chart />} />
-          <Route path="/feel" element={<Feel />} />
-          {/* catch-all route for handling invalid paths */}
-          <Route path="*" element={<Error />} />
+          {iuserInfo.iuser === 0 ? (
+            <Route
+              path="/"
+              element={<Intro iuserInfo={iuserInfo} setIuser={setIuserInfo} />}
+            />
+          ) : (
+            <Route path="/" element={<Calendar iuserInfo={iuserInfo} />} />
+          )}
+
+          <Route path="/about" element={<About iuserInfo={iuserInfo} />} />
+          <Route
+            path="/calendar/:iuser"
+            element={<Calendar iuserInfo={iuserInfo} />}
+          />
+
+          {/* <Route
+           path="/calendar"
+            element={<Calendar iuserInfo={iuserInfo} />}
+          /> */}
+          <Route
+            path="/calendar"
+            element={<Calendar iuserInfo={iuserInfo} />}
+          />
+
 
       
         </Routes>

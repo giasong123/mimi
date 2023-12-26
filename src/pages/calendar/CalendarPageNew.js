@@ -60,7 +60,7 @@ const initPostTodo = {
   endDate: "",
 };
 export const CalenPageNew = props => {
-  console.log("iuser: ", props.iuserInfo.iuser);
+  // console.log("iuser: ", props.iuserInfo.iuser);
   const { iuser, itodo } = useParams();
   const param = useParams();
   const [todoList, setTodoList] = useState(initTodoList);
@@ -76,6 +76,7 @@ export const CalenPageNew = props => {
   const [callImageId, setCallImageId] = useState(0);
 
   const handleDeleteTodo = item => {
+    // console.log(item.itodo);
     deleteTodo(props.iuserInfo.iuser, item.itodo, deleteSuccess);
   };
   const deleteSuccess = () => {
@@ -224,15 +225,17 @@ export const CalenPageNew = props => {
             ? selectedDate2.format("YYYY-MM-DD")
             : "No date selected"}
         </p>
+
         <Calendar
           cellRender={cellRender}
           onSelect={handleDateSelect}
           value={selectedDate2}
         />
       </div>
-      <div className="center-line"></div>
+      {/* <div className="center-line">dddd</div> */}
 
       <TodoRight>
+        <div className="center-line"></div>
         <div className="todo-inner">
           <div className="todo-inin">
             <div className="header-todo">
@@ -247,7 +250,7 @@ export const CalenPageNew = props => {
               </p>
 
               <span className="print-emo">
-                <div className="blue-line"></div>
+                {/* <div className="blue-line"></div> */}
                 <img
                   src={`/images/layer${callImageId - 1}.svg`}
                   alt={`${process.env.PUBLIC_URL}/images/layer${callImageId}.svg`}
@@ -256,10 +259,11 @@ export const CalenPageNew = props => {
                 {/* <div className="emt-line"></div> */}
                 {/* <p>{getTodo.hasTodo}</p> */}
               </span>
-              <div>
+              <div className="todoinput">
                 <input
                   type="text"
                   value={newContent}
+                  placeholder="입력해주세요"
                   onChange={e => {
                     setNewContent(e.target.value);
                   }}
