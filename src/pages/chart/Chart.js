@@ -34,7 +34,8 @@ const Chart = props => {
             ""
           )}
 
-          <hr></hr>
+          <hr className="half-line"></hr>
+
           {chartData ? <LineChart lineData={emoChart}></LineChart> : ""}
           {chartData ? (
             <KeyWordChart
