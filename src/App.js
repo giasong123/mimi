@@ -7,9 +7,11 @@ import Calendar from "./pages/calendar/CalendarPageNew";
 import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
+
 import { Wrap } from "./styles/basic";
 import Header from "./components/Header";
 import { calc } from "antd/es/theme/internal";
+import Error from "./pages/errorpage/error";
 
 const initUserInfo = { iuser: 0, result: 0, userNickName: "" };
 const App = () => {
@@ -19,7 +21,8 @@ const App = () => {
   };
   return (
     <Wrap>
-      <Header iuserInfo={iuserInfo} setIuser={setIuserInfo}></Header>
+
+      <Header />
       <main style={mainStyle}>
         <Routes>
           {iuserInfo.iuser === 0 ? (
@@ -38,7 +41,7 @@ const App = () => {
           />
 
           {/* <Route
-            path="/calendar"
+           path="/calendar"
             element={<Calendar iuserInfo={iuserInfo} />}
           /> */}
           <Route
@@ -46,9 +49,8 @@ const App = () => {
             element={<Calendar iuserInfo={iuserInfo} />}
           />
 
-          <Route path="/chart" element={<Chart iuserInfo={iuserInfo} />} />
-          <Route path="/feel" element={<Feel iuserInfo={iuserInfo} />} />
-          <Route path="*" element={<h1>파일이없네요.</h1>} />
+
+      
         </Routes>
       </main>
     </Wrap>
