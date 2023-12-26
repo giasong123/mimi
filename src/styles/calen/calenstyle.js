@@ -8,21 +8,17 @@ export const CalenStyle = styled.div`
 
   .left {
     width: 40%;
-    /* height: 100%; */
-    background-color: aqua;
+    height: 100%;
+    /* background-color: aqua; */
     margin: auto;
+    background: #00042d;
+  }
+  .left p {
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
   }
   .calendar {
-    position: relative;
-    display: block;
-    width: 90%;
-    height: 90%;
-    background-color: aliceblue;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-    align-items: center;
   }
 
   .calendar .month {

@@ -62,7 +62,7 @@ export const IntroPage = styled.div`
   .intro-log input::placeholder {
     font-size: 25px;
     color: #a3a3a3;
-    padding-left: 20px;
+    padding-left: 0px;
     margin-top: 100px;
   }
 
