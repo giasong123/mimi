@@ -12,7 +12,7 @@ const initNickName = "";
 const initGender = "";
 const initAge = 0;
 
-const Intro = () => {
+const Intro = props => {
   const [nickName, setNickName] = useState(initNickName);
   const [gender, setGender] = useState(initGender);
   const [age, setAge] = useState(initAge);
@@ -30,11 +30,12 @@ const Intro = () => {
       alert("성별을 입력하세요.");
       return;
     }
-    if (age === 0) {
-      alert("나이를 입력하세요.");
+    if (age === 0 || age > 100) {
+      alert("나이를 0에서 100까지만 입력하세요.");
       return;
     }
 
+    //  닉네임, 성별, 나아, 성공시, 실패시
     postUser(nickName, gender, age, successFn, failFn);
   };
   const handleChangeMember = e => {
@@ -57,8 +58,9 @@ const Intro = () => {
     }
   };
 
-  const successFn = () => {
-    alert("등록에 성공하였습니다.");
+  const successFn = _userInfo => {
+    props.setIuser(_userInfo);
+    alert("로그인에 성공하였습니다.");
     navigate("/feel");
   };
 
@@ -110,12 +112,14 @@ const Intro = () => {
               <option value="">성별을 선택해주세요</option>
               <option value="0">여자</option>
               <option value="1">남자</option>
-              <option value="2">중성</option>
+              <option value="2">선택안함</option>
             </select>
             <br />
 
             <input
               type="number"
+              max={100}
+              min={0}
               name="age"
               placeholder="나이를 입력해주세요"
               value={age}

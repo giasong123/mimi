@@ -3,26 +3,18 @@ import "../../styles/feel/feel.css";
 import { postEmo } from "../../api/emo/apiemo";
 import { useNavigate } from "react-router-dom";
 
-// 사용자 선택 기분 점수 초기값
-const feelInitPoint = 0;
-const feelInitMood = "";
-
-const Feel = () => {
-  // path 이동하기
+const Feel = (props) => {
   const navigate = useNavigate();
   const nowIcon = useRef(null);
 
-  // 선택을 했는지 안했는지 판단
   const [selectFeel, setSelectFeel] = useState(false);
   const [selectMood, setSelectMood] = useState(false);
 
-  const [feelPoint, setFeelPoint] = useState(feelInitPoint);
+  const [feelPoint, setFeelPoint] = useState(0);
   const handleClick = (icon, event) => {
-    // 사용자가 선택을 했다면 추가 선택 못하게
     if (selectFeel === true) {
       return;
     }
-    // html 태그
     nowIcon.current = event.target;
     event.target.style.transform = "scale(1.5)";
     event.target.style.paddingBottom = "30px";
@@ -31,21 +23,31 @@ const Feel = () => {
     setSelectFeel(true);
   };
 
-  const [feelMood, setFeelMood] = useState(feelInitMood);
+  const [feelMood, setFeelMood] = useState("");
+  const [selectedMood, setSelectedMood] = useState("");
+
   const handleClickMood = (mood, event) => {
-    // 사용자가 선택을 했다면 추가 선택 못하게
-    if (selectMood === true) {
-      return;
+    if (selectedMood === mood) {
+      // 이미 선택된 키워드를 다시 클릭한 경우 선택 해제
+      event.target.style.transform = "scale(1.0)";
+      event.target.style.padding = "0";
+      setSelectedMood("");
+      setSelectMood(false);
+    } else {
+      if (selectMood === true) {
+        return;
+      }
+
+      // 다른 키워드를 선택한 경우
+      event.target.style.transform = "scale(1.5)";
+      event.target.style.padding = "0 10px";
+
+      setFeelMood(mood);
+      setSelectedMood(mood);
+      setSelectMood(true);
     }
-
-    event.target.style.transform = "scale(1.5)";
-    event.target.style.padding = "0 10px";
-
-    setFeelMood(mood);
-    setFeelMood(true);
   };
 
-  // 자료를 백엔드로 보내기
   const handleClickAdd = () => {
     if (feelPoint === 0) {
       alert("기분을 선택해주세요!");
@@ -56,9 +58,7 @@ const Feel = () => {
       return;
     }
 
-    postEmo(1, feelPoint, feelMood, failEmo, successNext);
-    // console.log("기분", feelPoint);
-    // console.log("키워드", feelMood);
+    postEmo(props.iuserInfo.iuser, feelPoint, feelMood, failEmo, successNext);
   };
 
   const successNext = () => {
@@ -74,9 +74,9 @@ const Feel = () => {
     setSelectFeel(false);
 
     setFeelMood("");
+    setSelectedMood("");
     setSelectMood(false);
   };
-
   return (
     <div className="wrap">
       <div className="header">
@@ -91,7 +91,7 @@ const Feel = () => {
         <ul>
           <li>
             <img
-              src="./images/layer.svg"
+              src="./images/layer0.svg"
               alt=""
               onClick={e => {
                 handleClick(1, e);
@@ -174,6 +174,7 @@ const Feel = () => {
                   handleClickMood("기쁜", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/hopeful.svg"
                 alt=""
@@ -245,6 +246,7 @@ const Feel = () => {
                   handleClickMood("당황한", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/insensitive.svg"
                 alt=""
@@ -323,6 +325,7 @@ const Feel = () => {
                   handleClickMood("외로운", e);
                 }}
               />
+              <br/>
               <img
                 src="./images/mortifying.svg"
                 alt=""
