@@ -9,8 +9,8 @@ const TodoInput = props => {
   const [memo, setMemo] = useState(item.todoContent);
   const [edit, setEdit] = useState(props.mode);
 
-  const handleClickEdit = _수정완료 => {
-    if (_수정완료) {
+  const handleClickEdit = _complete => {
+    if (_complete) {
       setEdit(true);
     } else {
       const obj = {

@@ -98,7 +98,7 @@ const Intro = props => {
             <input
               type="text"
               name="nickname"
-              placeholder="네임을 입력해주세요"
+              placeholder="닉네임을 입력해주세요"
               value={nickName}
               onChange={e => {
                 handleChangeMember(e);

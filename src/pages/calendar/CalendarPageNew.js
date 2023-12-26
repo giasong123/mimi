@@ -131,6 +131,7 @@ export const CalenPageNew = props => {
               //   showModal(item);
             }}
           >
+            {/* emotionTag */}
             {item.emotionTag !== null ? (
               <Badge status="error" text={item.emotionTag} />
             ) : (
@@ -178,12 +179,13 @@ export const CalenPageNew = props => {
             ? selectedDate2.format("YYYY-MM-DD")
             : "No date selected"}
         </p>
-
-        <Calendar
-          cellRender={cellRender}
-          onSelect={handleDateSelect}
-          value={selectedDate2}
-        />
+        <div className="calendar">
+          <Calendar
+            cellRender={cellRender}
+            onSelect={handleDateSelect}
+            value={selectedDate2}
+          />
+        </div>
       </div>
       <TodoRight>
         <div className="center-line"></div>
