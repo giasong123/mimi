@@ -30,7 +30,7 @@ const about = () => {
           <ul>
             <div className="b_tag"></div>
             <li>이름: 김주영</li>
-            <li>담당파트:캘린더 및 투두</li>
+            <li>담당파트:인트로 페이지,캘린더 및 투두</li>
             <li>
               <a
                 href="https://github.com/zuicy99?tab=repositories"
@@ -55,7 +55,7 @@ const about = () => {
             </li>
             <div className="b_tag"></div>
             <li>이름: 김도현</li>
-            <li>담당파트:차트</li>
+            <li>담당파트:에러 페이지 및 차트</li>
             <li>
               <a href="https://github.com/dsa9925" className="a_tag">
                 깃허브
@@ -77,7 +77,7 @@ const about = () => {
             </li>
             <div className="b_tag"></div>
             <li>이름: 송보경</li>
-            <li>담당파트:이모션</li>
+            <li>담당파트:about 페이지 및 이모션 </li>
             <li>
               <a
                 href="https://github.com/giasong123/mimi.git"
