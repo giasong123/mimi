@@ -21,6 +21,7 @@ img {
 html {
   font-size: 10px;
   overflow: hidden;
+  min-width: 1280px;
 }
 body {
   font-family: "Noto Sans KR", sans-serif;

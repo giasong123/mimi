@@ -6,9 +6,7 @@ export const getTodoIuser = async (
   year,
   month,
   day,
-  setTodoList,
-  setCallImageId,
-  setCallImageStr,
+  getTodoIuserSucess,
 ) => {
   console.log("getTodoIuser");
 
@@ -17,13 +15,12 @@ export const getTodoIuser = async (
     // const query = `/api/todo/${7}?y=${2023}&m=${12}&d=${21}`;
     // /api/todo/7?y=2023&m=12&d=21/
     const res = await axios.get(query);
-    console.log("할일 목록 서버 데이터 :", res.data);
+    // console.log("할일 목록 서버 데이터 :", res.data);
 
     const resStatus = res.status.toString();
     if (resStatus.charAt(0) === "2") {
-      setTodoList(res.data.todos);
-      setCallImageId(res.data.emotionGrade);
-      setCallImageStr(res.data.emotionTag);
+      // console.log("데이터 정상 : ", res.data.todos);
+      getTodoIuserSucess(res.data);
     } else {
       // 프론트는 요청을 잘못했나?
       // 백엔드에서 값의 종류나 단어를 바꿨나?
@@ -34,34 +31,37 @@ export const getTodoIuser = async (
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
     // 샘플 즉, 서버 오류시 샘플 데이터로 작업하기
     // {"emotion":null,"emotionTag":null,"todos":[]}
-
-    setCallImageId(5);
-    setCallImageStr("기쁜");
-    setTodoList([
-      {
-        itodo: 130,
-        todoContent: "Morbi non lectus.",
-        startDate: "2023-12-21",
-        endDate: "2023-12-21",
-        startTime: "00:00:00",
-        endTime: "23:59:59",
-        repeatEndDate: null,
-        repeatType: null,
-        repeatNum: null,
-      },
-      {
-        itodo: 187,
-        todoContent:
-          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        startDate: "2023-12-21",
-        endDate: "2023-12-21",
-        startTime: "00:00:00",
-        endTime: "23:59:59",
-        repeatEndDate: null,
-        repeatType: null,
-        repeatNum: null,
-      },
-    ]);
+    const sampleData = {
+      todos: [
+        {
+          itodo: 130,
+          todoContent: "Morbi non lectus.",
+          startDate: "2023-12-21",
+          endDate: "2023-12-21",
+          startTime: "00:00:00",
+          endTime: "23:59:59",
+          repeatEndDate: null,
+          repeatType: null,
+          repeatNum: null,
+        },
+        {
+          itodo: 187,
+          todoContent:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+          startDate: "2023-12-21",
+          endDate: "2023-12-21",
+          startTime: "00:00:00",
+          endTime: "23:59:59",
+          repeatEndDate: null,
+          repeatType: null,
+          repeatNum: null,
+        },
+      ],
+      emotionGrade: 5,
+      emotionTag: "기쁜",
+    };
+    getTodoIuserSucess(sampleData);
+    window.location.href = "/";
   }
 };
 
@@ -81,6 +81,7 @@ export const patchTodo = async (obj, patchSuccess) => {
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
+    window.location.href = "/";
   }
 };
 
@@ -105,6 +106,7 @@ export const deleteTodo = async (iuser, itodo, deleteSuccess) => {
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
+    window.location.href = "/";
   }
 };
 
@@ -124,6 +126,7 @@ export const postTodo = async (obj, postTodoSuccess) => {
   } catch (error) {
     console.log(error);
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
+    window.location.href = "/";
   }
 };
 

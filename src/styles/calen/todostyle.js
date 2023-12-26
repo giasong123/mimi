@@ -134,10 +134,11 @@ export const TodoRight = styled.div`
     cursor: pointer;
     /* border: #ffffff solid 1px; */
     margin-left: 10px;
+    cursor: pointer;
   }
-
-  .delet-bt button:hover {
-    background-image: url("./images/deleteb.svg");
+  .delet-bt img {
+    width: 30px;
+    height: 30px;
   }
 
   .red-line {

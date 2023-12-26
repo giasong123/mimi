@@ -13,7 +13,7 @@ const OneWeekEmo = props => {
           {weekData.map((item, index) => (
             <li key={index}>
               {item.emotionGrade === 1 && (
-                <img src="/images/layer.svg" alt="" />
+                <img src="/images/layer0.svg" alt="" />
               )}
               {item.emotionGrade === 2 && (
                 <img src="/images/layer1.svg" alt="" />

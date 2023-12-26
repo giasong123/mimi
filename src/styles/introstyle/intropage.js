@@ -57,6 +57,7 @@ export const IntroPage = styled.div`
     color: #a3a3a3;
     border: 1px solid #afafaf;
     margin-top: 22px;
+    padding-left: 15px;
   }
   .intro-log input::placeholder {
     font-size: 25px;
@@ -89,6 +90,8 @@ export const IntroPage = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    cursor: pointer;
   }
 
   .intro-r {

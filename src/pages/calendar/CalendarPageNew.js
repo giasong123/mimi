@@ -7,62 +7,14 @@ import { deleteTodo, getTodoIuser, postTodo } from "../../api/todo/apitodo";
 import { useParams } from "react-router";
 import { getEmoIuser } from "../../api/emo/apiemo";
 
-import { Modal, Calendar, Badge } from "antd";
+import { Calendar, Badge } from "antd";
 import moment from "moment/moment";
-const getListData = () => {
-  let listData = [
-    {
-      itodo: 1,
-      todoUser: 1,
-      todoTitle: "크리스마스 할일",
-      todoContent: "todoContent",
-      todoComplete: 1,
-      todoDate: "2023-12-24",
-      todoPic:
-        "https://cdn.mediatoday.co.kr/news/photo/202311/313885_438531_4716.jpg",
-    },
-    {
-      itodo: 2,
-      todoUser: 1,
-      todoTitle: "혼자 바다구경 ㅠㅠ",
-      todoContent: "todoContent",
-      todoComplete: 1,
-      todoDate: "2023-12-24",
-      todoPic:
-        "https://cdn.mediatoday.co.kr/news/photo/202311/313885_438531_4716.jpg",
-    },
-    {
-      itodo: 3,
-      todoUser: 1,
-      todoTitle: "혼자 바다구경 ㅠㅠ",
-      todoContent: "todoContent",
-      todoComplete: 1,
-      todoDate: "2023-12-21",
-      todoPic:
-        "https://cdn.mediatoday.co.kr/news/photo/202311/313885_438531_4716.jpg",
-    },
-  ];
-
-  return listData;
-};
+import dayjs from "dayjs";
 
 const initTodoList = [];
-const initChoiceDate = "";
-const initGetTodo = {
-  emotion: null,
-  emotionTag: null,
-  todos: [],
-};
-const initPostTodo = {
-  iuser: 0,
-  todoContent: "",
-  startDate: "",
-  endDate: "",
-};
+
 export const CalenPageNew = props => {
   // console.log("iuser: ", props.iuserInfo.iuser);
-  const { iuser, itodo } = useParams();
-  const param = useParams();
   const [todoList, setTodoList] = useState(initTodoList);
   // 투두리스트
   const [callImageStr, setCallImageStr] = useState("");
@@ -89,12 +41,16 @@ export const CalenPageNew = props => {
       dd[0],
       dd[1],
       dd[2],
-      setTodoList,
-      setCallImageId,
-      setCallImageStr,
+      getTodoIuserSucess,
     );
 
     getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess);
+  };
+
+  const getTodoIuserSucess = _data => {
+    setTodoList(_data.todos);
+    setCallImageId(_data.emotionGrade);
+    setCallImageStr(_data.emotionTag);
   };
 
   useEffect(() => {
@@ -108,16 +64,13 @@ export const CalenPageNew = props => {
       ddd[0],
       ddd[1],
       ddd[2],
-      setTodoList,
-      setCallImageId,
-      setCallImageStr,
+      getTodoIuserSucess,
     );
 
     getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess);
   }, []);
 
   // 코드 수정 (2023 12 22)
-
   const [newContent, setNewContent] = useState("");
   const handleClickAddTodo = () => {
     if (todoList.length >= 10) {
@@ -143,15 +96,14 @@ export const CalenPageNew = props => {
     setNewContent("");
     const gogo = selectedDate2.format("YYYY-MM-DD");
     const dd = gogo.split("-");
+
     // 서버에 보내서 todo 목록 얻기
     getTodoIuser(
       props.iuserInfo.iuser,
       dd[0],
       dd[1],
       dd[2],
-      setTodoList,
-      setCallImageId,
-      setCallImageStr,
+      getTodoIuserSucess,
     );
 
     getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess);
@@ -166,7 +118,6 @@ export const CalenPageNew = props => {
   // 캘린더 관련
   // 일별 자료 출력하기
   const dateCellRender = value => {
-    const listData = getListData();
     const selectDate = `${value.year()}-${value.month() + 1}-${value.date()}`;
     const findeShowList = isEmoList.filter(
       item => item.day.trim() === selectDate,
@@ -204,23 +155,25 @@ export const CalenPageNew = props => {
   const handleDateSelect = value => {
     const gogo = value.format("YYYY-MM-DD");
     const dd = gogo.split("-");
+
     // 서버에 보내서 todo 목록 얻기
     getTodoIuser(
       props.iuserInfo.iuser,
       dd[0],
       dd[1],
       dd[2],
-      setTodoList,
-      setCallImageId,
-      setCallImageStr,
+      getTodoIuserSucess,
     );
     setSelectedDate2(value);
   };
+
+  useEffect(() => {
+    setSelectedDate2(dayjs());
+  }, []);
   return (
     <CalenStyle>
       <div className="left">
         <p>
-          {" "}
           {selectedDate2
             ? selectedDate2.format("YYYY-MM-DD")
             : "No date selected"}
@@ -232,8 +185,6 @@ export const CalenPageNew = props => {
           value={selectedDate2}
         />
       </div>
-      {/* <div className="center-line">dddd</div> */}
-
       <TodoRight>
         <div className="center-line"></div>
         <div className="todo-inner">
@@ -243,21 +194,14 @@ export const CalenPageNew = props => {
                 {selectedDate2
                   ? selectedDate2.format("YYYY-MM-DD")
                   : "날짜를 선택주세요."}
-                {/* 23.12.08 금요일 */}
-                {/* {`${currentMonth.getFullYear()}년 ${
-                  currentMonth.getMonth() + 1
-                }월 `} */}
               </p>
 
               <span className="print-emo">
-                {/* <div className="blue-line"></div> */}
                 <img
                   src={`/images/layer${callImageId - 1}.svg`}
                   alt={`${process.env.PUBLIC_URL}/images/layer${callImageId}.svg`}
                 />
                 <p>{callImageStr}</p>
-                {/* <div className="emt-line"></div> */}
-                {/* <p>{getTodo.hasTodo}</p> */}
               </span>
               <div className="todoinput">
                 <input
@@ -279,24 +223,10 @@ export const CalenPageNew = props => {
             <div className="todo-main">
               <div
                 style={{
-                  // height: "500px",
-                  // background: "red",
                   overflowX: "hidden",
                   overflowY: "auto",
                 }}
               >
-                {/* {getTodo.todos.map((item, idx) => {
-                  return (
-                    <TodoInput
-                      key={idx}
-                      item={item}
-                      mode={false}
-                      onDelete={() => {
-                        handleDeleteTodo(item);
-                      }}
-                    />
-                  );
-                })} */}
                 {todoList.map((item, idx) => {
                   return (
                     <TodoInput
@@ -312,21 +242,6 @@ export const CalenPageNew = props => {
                 })}
               </div>
             </div>
-            {/* <ul className="todo-list">
-              <div className="red-line"></div>
-              <p>강아지 밥주기</p>
-            </ul>
-            <button className="delet-bt">
-              <img src="./images/deleten.svg" />
-            </button>
-
-            <ul className="todo-list">
-              <div className="red-line"></div>
-              <p>강아지 밥주기</p>
-              <button>
-                <img src="./images/deleten.svg" />
-              </button>
-            </ul> */}
           </div>
         </div>
       </TodoRight>

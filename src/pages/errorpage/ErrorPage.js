@@ -5,7 +5,6 @@ import "../../styles/errorpage/error.css";
 
 const ErrorPage = () => {
   const LayOutPage = styled.div`
-    width: 114px;
     min-height: 960px;
     display: flex;
     overflow-y: hidden;
@@ -13,7 +12,6 @@ const ErrorPage = () => {
     .nav {
       position: relative;
       display: flex;
-      width: 114px;
       height: 100%;
       background-color: #f1f1f1;
       /* text-align: center; */
@@ -50,7 +48,6 @@ const ErrorPage = () => {
       margin-left: 50%;
     }
   `;
-
   return (
     <LayOutPage>
       <div className="error-wap">
@@ -77,4 +74,5 @@ const ErrorPage = () => {
     </LayOutPage>
   );
 };
+
 export default ErrorPage;

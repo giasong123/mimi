@@ -61,7 +61,11 @@ const Intro = props => {
   const successFn = _userInfo => {
     props.setIuser(_userInfo);
     alert("로그인에 성공하였습니다.");
-    navigate("/feel");
+    if (_userInfo.hasEmotion === 1) {
+      navigate("/calendar");
+    } else {
+      navigate("/feel");
+    }
   };
 
   const failFn = () => {
@@ -94,7 +98,7 @@ const Intro = props => {
             <input
               type="text"
               name="nickname"
-              placeholder="닉네임을 입력해주세요"
+              placeholder="네임을 입력해주세요"
               value={nickName}
               onChange={e => {
                 handleChangeMember(e);
