@@ -27,7 +27,7 @@ const getListData = () => {
       todoTitle: "혼자 바다구경 ㅠㅠ",
       todoContent: "todoContent",
       todoComplete: 1,
-      todoDate: "2023-12-24",
+      todoDate: "2023-12-25",
       todoPic:
         "https://cdn.mediatoday.co.kr/news/photo/202311/313885_438531_4716.jpg",
     },
