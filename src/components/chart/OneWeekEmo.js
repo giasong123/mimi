@@ -3,6 +3,8 @@ const OneWeekEmo = props => {
   const userName = props.userName;
   // console.log("weekData", weekData);
   const dayArr = ["월", "화", "수", "목", "금", "토", "일"];
+
+  console.log("weekData :", weekData);
   return (
     <div className="feel-facebox">
       <div className="feel-title">

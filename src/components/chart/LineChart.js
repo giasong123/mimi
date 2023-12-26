@@ -69,7 +69,7 @@ const LineChart = props => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "transportation",
+        legend: "우울지수",
         legendOffset: 36,
         legendPosition: "middle",
       }}
