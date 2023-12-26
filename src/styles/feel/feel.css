@@ -18,11 +18,16 @@
 
 .feel_affect {
   position: relative;
+
+
 }
 
 .feel_affect img {
   cursor: pointer;
   transition: all 0.5s;
+  width: 100px;
+  height: auto;
+
 }
 /* .feel_affect img:hover {
   transform: scale(1.2);
@@ -54,7 +59,9 @@
 
 .feel_mood img {
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.4s;
+  width: 130px;
+  height: auto;
 }
 .feel_very_good {
   position: relative;
