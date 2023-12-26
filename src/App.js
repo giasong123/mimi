@@ -7,9 +7,11 @@ import Calendar from "./pages/calendar/CalendarPageNew";
 import Chart from "./pages/chart/Chart";
 import Feel from "./pages/feel/Feel";
 import Intro from "./pages/intro/Intro";
+
 import { Wrap } from "./styles/basic";
 import Header from "./components/Header";
 import { calc } from "antd/es/theme/internal";
+import Error from "./pages/errorpage/error";
 
 const initUserInfo = { iuser: 0, result: 0, userNickName: "" };
 const App = () => {
@@ -19,32 +21,20 @@ const App = () => {
   };
   return (
     <Wrap>
-      <Header iuserInfo={iuserInfo} setIuser={setIuserInfo}></Header>
+
+      <Header />
       <main style={mainStyle}>
         <Routes>
-          {iuserInfo.iuser === 0 ? (
-            <Route
-              path="/"
-              element={<Intro iuserInfo={iuserInfo} setIuser={setIuserInfo} />}
-            />
-          ) : (
-            <Route path="/" element={<Calendar iuserInfo={iuserInfo} />} />
-          )}
+          <Route path="/" element={<Intro />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/calendar/:iuser" element={<Calendar />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/chart" element={<Chart />} />
+          <Route path="/feel" element={<Feel />} />
+          {/* catch-all route for handling invalid paths */}
+          <Route path="*" element={<Error />} />
 
-          <Route path="/about" element={<About iuserInfo={iuserInfo} />} />
-          {/* <Route
-            path="/calendar/:iuser"
-            element={<Calendar iuserInfo={iuserInfo} />}
-          /> */}
-
-          <Route
-            path="/calendar"
-            element={<Calendar iuserInfo={iuserInfo} />}
-          />
-
-          <Route path="/chart" element={<Chart iuserInfo={iuserInfo} />} />
-          <Route path="/feel" element={<Feel iuserInfo={iuserInfo} />} />
-          <Route path="*" element={<h1>파일이없네요.</h1>} />
+      
         </Routes>
       </main>
     </Wrap>

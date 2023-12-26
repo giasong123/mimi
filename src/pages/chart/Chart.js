@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import "../../styles/css/chart.css";
+import "../../styles/chart/chart.css";
 
 import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";

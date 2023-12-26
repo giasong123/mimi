@@ -1,5 +1,7 @@
 // nivo
 import { ResponsiveLine } from "@nivo/line";
+import { getChart } from "../../api/emo/apichart";
+import { useEffect, useState } from "react";
 
 const data = {
   data: [
@@ -73,11 +75,30 @@ const data = {
     },
   ],
 };
+const initData = {
+  emoChart: [],
+  good: 0,
+  normal: 0,
+  bad: 0,
+};
 
-const LineChart = props => {
-  const weekData = props.weekData;
+const LineChart = () => {
+  // 화면에 보여줄 서버 데이터 관리
+  const [chartData, setChartData] = useState(initData);
+  // 사용자 번호
+  const [userNo, setUserNo] = useState(7);
+  const getChartAction = () => {
+    console.log("자료호출");
+    getChart(userNo, setChartData);
+  };
+
+  console.log("chartData : ", chartData);
+  useEffect(() => {
+    getChartAction();
+  }, []);
+
   // 차트
-  const MyResponsiveLine = ({ data }) => (
+  const MyResponsiveLine = ({ chartData }) => (
     <ResponsiveLine
       data={data}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
