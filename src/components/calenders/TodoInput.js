@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/calen/todostyle";
 import styled from "@emotion/styled";
 import { patchTodo } from "../../api/todo/apitodo";
@@ -40,6 +40,9 @@ const TodoInput = props => {
     }
   };
 
+  useEffect(() => {
+    setMemo(item.todoContent);
+  }, [item]);
   return (
     <div className="todo-list">
       <div className="red-line"></div>
@@ -76,9 +79,6 @@ const TodoInput = props => {
                 handelDelete();
               }}
               className="delet-bt"
-              style={{
-                cursor: "pointer",
-              }}
             >
               <img src="/images/delete-w.svg" alt="Delete" />
             </button>
