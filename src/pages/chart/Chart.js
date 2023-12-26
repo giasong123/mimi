@@ -6,24 +6,18 @@ import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";
 import { getChart } from "../../api/emo/apichart";
 import OneWeekEmo from "../../components/chart/OneWeekEmo";
-const initData = {
-  emoChart: [],
-  good: 0,
-  normal: 0,
-  bad: 0,
-};
+
 const Chart = props => {
   console.log("iuser: ", props.iuserInfo.iuser);
   // 화면에 보여줄 서버 데이터 관리
-  const [chartData, setChartData] = useState(initData);
-  // 사용자 번호
-  const [userNo, setUserNo] = useState(7);
+  const [chartData, setChartData] = useState(null);
+  const [emoChart, setEmoChart] = useState([]);
   // 사용자 이름
-  const [userName, setUserName] = useState("홍길동");
+  const [userName, setUserName] = useState(props.iuserInfo.userNickName);
 
   const getChartAction = () => {
     console.log("자료호출");
-    getChart(userNo, setChartData);
+    getChart(props.iuserInfo.iuser, setChartData, setEmoChart);
   };
 
   useEffect(() => {
@@ -34,16 +28,23 @@ const Chart = props => {
     <div className="chart-page">
       <div className="main-box">
         <div className="box-inner">
-          <OneWeekEmo weekData={chartData.emoChart} userName={userName} />
+          {chartData ? (
+            <OneWeekEmo weekData={chartData.emoChart} userName={userName} />
+          ) : (
+            ""
+          )}
 
           <hr></hr>
-
-          {/* <LineChart weekData={chartData.emoChart}></LineChart> */}
-          <KeyWordChart
-            good={chartData.good}
-            normal={chartData.normal}
-            bad={chartData.bad}
-          ></KeyWordChart>
+          {chartData ? <LineChart lineData={emoChart}></LineChart> : ""}
+          {chartData ? (
+            <KeyWordChart
+              good={chartData.good}
+              normal={chartData.normal}
+              bad={chartData.bad}
+            ></KeyWordChart>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

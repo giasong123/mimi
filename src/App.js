@@ -23,7 +23,7 @@ const App = () => {
       <Header iuserInfo={iuserInfo} setIuser={setIuserInfo}></Header>
       <main style={mainStyle}>
         <Routes>
-          {iuserInfo.iuser === 0 ? (
+          {iuserInfo.userNickName === "" ? (
             <Route
               path="/"
               element={<Intro iuserInfo={iuserInfo} setIuser={setIuserInfo} />}

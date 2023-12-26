@@ -1,51 +1,15 @@
 // nivo
 import { ResponsiveLine } from "@nivo/line";
-import { getChart } from "../../api/emo/apichart";
-import { useEffect, useState } from "react";
 
 const data = {
   data: [
     {
-      id: "이번주",
-      color: "hsl(226, 70%, 50%)",
+      id: "Feel",
+      color: "hsl(326, 70%, 50%)",
       data: [
         {
           x: "월",
-          y: 1,
-        },
-        {
-          x: "화",
-          y: 2,
-        },
-        {
-          x: "수",
           y: 3,
-        },
-        {
-          x: "목",
-          y: 4,
-        },
-        {
-          x: "금",
-          y: 5,
-        },
-        {
-          x: "토",
-          y: 3,
-        },
-        {
-          x: "일",
-          y: 3,
-        },
-      ],
-    },
-    {
-      id: "저번주",
-      color: "hsl(126, 70%, 50%)",
-      data: [
-        {
-          x: "월",
-          y: 1,
         },
         {
           x: "화",
@@ -53,19 +17,19 @@ const data = {
         },
         {
           x: "수",
-          y: 5,
+          y: 3,
         },
         {
           x: "목",
-          y: 4,
+          y: 3,
         },
         {
           x: "금",
-          y: 2,
+          y: 1,
         },
         {
           x: "토",
-          y: 1,
+          y: 3,
         },
         {
           x: "일",
@@ -82,42 +46,30 @@ const initData = {
   bad: 0,
 };
 
-const LineChart = () => {
-  // 화면에 보여줄 서버 데이터 관리
-  const [chartData, setChartData] = useState(initData);
-  // 사용자 번호
-  const [userNo, setUserNo] = useState(7);
-  const getChartAction = () => {
-    console.log("자료호출");
-    getChart(userNo, setChartData);
-  };
-
-  console.log("chartData : ", chartData);
-  useEffect(() => {
-    getChartAction();
-  }, []);
+const LineChart = props => {
+  const lineData = props.lineData;
 
   // 차트
-  const MyResponsiveLine = ({ chartData }) => (
+  const MyResponsiveLine = _obj => (
     <ResponsiveLine
-      data={data}
+      data={_obj.data}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
-        min: "1",
+        min: "0",
         max: "5",
-        stacked: false,
+        stacked: true,
         reverse: false,
       }}
-      yFormat=" >-.2f"
+      yFormat="0"
       axisTop={null}
       axisRight={null}
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "요일",
+        legend: "transportation",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -125,15 +77,16 @@ const LineChart = () => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "우울 지수",
+        legend: "count",
         legendOffset: -40,
         legendPosition: "middle",
       }}
-      pointSize={5}
+      pointSize={10}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
+      isInteractive={false}
       useMesh={true}
       legends={[
         {
@@ -168,7 +121,7 @@ const LineChart = () => {
   return (
     <div className="feel-chart">
       <div style={{ width: "100%", height: "400px" }}>
-        {MyResponsiveLine(data)}
+        {MyResponsiveLine(lineData)}
       </div>
     </div>
   );
