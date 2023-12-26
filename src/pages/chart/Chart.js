@@ -6,7 +6,6 @@ import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";
 import { getChart } from "../../api/emo/apichart";
 import OneWeekEmo from "../../components/chart/OneWeekEmo";
-
 const initData = {
   emoChart: [],
   good: 0,
@@ -39,7 +38,7 @@ const Chart = props => {
 
           <hr></hr>
 
-          <LineChart weekData={chartData.emoChart}></LineChart>
+          {/* <LineChart weekData={chartData.emoChart}></LineChart> */}
           <KeyWordChart
             good={chartData.good}
             normal={chartData.normal}

@@ -10,8 +10,7 @@ import Intro from "./pages/intro/Intro";
 
 import { Wrap } from "./styles/basic";
 import Header from "./components/Header";
-import { calc } from "antd/es/theme/internal";
-import Error from "./pages/errorpage/error";
+import ErrorPage from "./pages/errorpage/ErrorPage";
 
 const initUserInfo = { iuser: 0, result: 0, userNickName: "" };
 const App = () => {
@@ -21,8 +20,7 @@ const App = () => {
   };
   return (
     <Wrap>
-
-      <Header />
+      <Header iuserInfo={iuserInfo} setIuser={setIuserInfo}></Header>
       <main style={mainStyle}>
         <Routes>
           {iuserInfo.iuser === 0 ? (
@@ -35,13 +33,9 @@ const App = () => {
           )}
 
           <Route path="/about" element={<About iuserInfo={iuserInfo} />} />
-          <Route
-            path="/calendar/:iuser"
-            element={<Calendar iuserInfo={iuserInfo} />}
-          />
 
           {/* <Route
-           path="/calendar"
+            path="/calendar/:iuser"
             element={<Calendar iuserInfo={iuserInfo} />}
           /> */}
           <Route
@@ -49,8 +43,9 @@ const App = () => {
             element={<Calendar iuserInfo={iuserInfo} />}
           />
 
-
-      
+          <Route path="/chart" element={<Chart iuserInfo={iuserInfo} />} />
+          <Route path="/feel" element={<Feel iuserInfo={iuserInfo} />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
     </Wrap>

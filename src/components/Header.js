@@ -67,7 +67,7 @@ const Header = () => {
             <img src="./images/ncheck.svg" />
             <p>감정상태</p>
           </Link>
-          <Link to="/calendar/1">
+          <Link to="/calendar">
             <img src="./images/ncalen.svg" />
             <p>캘린더</p>
           </Link>

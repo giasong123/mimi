@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/errorpage/error.css";
 
-const Error = () => {
+const ErrorPage = () => {
   const LayOutPage = styled.div`
     width: 114px;
     min-height: 960px;
@@ -77,4 +77,4 @@ const Error = () => {
     </LayOutPage>
   );
 };
-export default Error;
+export default ErrorPage;
