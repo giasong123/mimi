@@ -35,6 +35,7 @@ const TodoInput = props => {
   const handelDelete = () => {
     if (props.onDelete) {
       // onDelete 함수를 호출하여 아이템 삭제
+      console.log(item.itodo);
       props.onDelete(item.itodo); // 여기서 item.id는 삭제할 항목의 고유 식별자일 것입니다.
     }
   };
@@ -68,6 +69,7 @@ const TodoInput = props => {
               }}
             >
               {memo}
+              {/* {item.itodo} */}
             </span>
             <button
               onClick={() => {
@@ -78,7 +80,7 @@ const TodoInput = props => {
                 cursor: "pointer",
               }}
             >
-              <img src="/images/deleten.svg" alt="Delete" />
+              <img src="/images/delete-w.svg" alt="Delete" />
             </button>
           </>
         )}

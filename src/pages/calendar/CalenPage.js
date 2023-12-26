@@ -24,6 +24,7 @@ export const CalenPage = () => {
 
   const param = useParams();
   console.log(param.iuser);
+
   // 선택된 날짜 state
   const [choiceDate, setChoiceDate] = useState(initChoiceDate);
   // 선택된 날짜의 API 전달
@@ -108,7 +109,10 @@ export const CalenPage = () => {
             currentMonth.getFullYear(),
             currentMonth.getMonth() + 1,
             day,
-            setGetTodo,
+            // setGetTodo,
+            setTodoList,
+            setCallImageId,
+            setCallImageStr,
           );
         }}
       >
@@ -118,6 +122,7 @@ export const CalenPage = () => {
   };
 
   // 투두리스트
+  const [callImageStr, setCallImageStr] = useState("");
   const emoImages = [
     `${process.env.PUBLIC_URL}/images/layer1.svg`,
     `${process.env.PUBLIC_URL}/images/layer2.svg`,
@@ -125,7 +130,8 @@ export const CalenPage = () => {
     `${process.env.PUBLIC_URL}/images/layer4.svg`,
     `${process.env.PUBLIC_URL}/images/layer5.svg`,
   ];
-  const callImageId = getTodo.emotionGrade;
+  // const callImageId = getTodo.emotionGrade;
+  const [callImageId, setCallImageId] = useState(0);
 
   // const getTodoListAxio = () => {
   //   // 서버에 get 호출해서 전체 목록받기
@@ -164,7 +170,7 @@ export const CalenPage = () => {
     deleteTodo(iuser, itodo, item);
     // setTodoList();
   };
-  console.log(getTodo.emotionGrade);
+  // console.log(getTodo.emotionGrade);
   return (
     <CalenStyle>
       <div className="left">
@@ -214,10 +220,13 @@ export const CalenPage = () => {
               <span className="print-emo">
                 <div className="blue-line"></div>
                 <img
-                  src={`/images/layer${getTodo.emotionGrade - 1}.svg`}
-                  alt={`${process.env.PUBLIC_URL}/images/layer${getTodo.emotionGrade}.svg`}
+                  // src={`/images/layer${getTodo.emotionGrade - 1}.svg`}
+                  src={`/images/layer${callImageId - 1}.svg`}
+                  // alt={`${process.env.PUBLIC_URL}/images/layer${getTodo.emotionGrade}.svg`}
+                  alt={`${process.env.PUBLIC_URL}/images/layer${callImageId}.svg`}
                 />
-                <p>{getTodo.emotionTag}</p>
+                {/* <p>{getTodo.emotionTag}</p> */}
+                <p>{callImageStr}</p>
                 {/* <div className="emt-line"></div> */}
                 {/* <p>{getTodo.hasTodo}</p> */}
               </span>
@@ -233,7 +242,7 @@ export const CalenPage = () => {
                   overflowY: "auto",
                 }}
               >
-                {getTodo.todos.map((item, idx) => {
+                {todoList.map((item, idx) => {
                   return (
                     <TodoInput
                       key={idx}
