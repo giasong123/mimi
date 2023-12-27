@@ -23,7 +23,7 @@ const Header = props => {
     .nav-img {
       position: absolute;
       text-align: center;
-      margin-top: 200px;
+      margin-top: 150px;
       margin-left: 38px;
     }
     .nav-img img {
@@ -31,8 +31,10 @@ const Header = props => {
       display: block;
       width: 33px;
       height: 30px;
-      margin-top: 67px;
+      margin-top: 60px;
+      /* padding-top: 20px; */
       /* margin-left: 34px; */
+      cursor: pointer;
     }
 
     .nabout-icon {
@@ -43,12 +45,25 @@ const Header = props => {
       position: relative;
       width: 33px;
       height: 30px;
-      margin-top: 800px;
+      margin-top: 750px;
       margin-left: 35px;
     }
     .nabout-icon p {
       position: absolute;
       margin-left: 50%;
+    }
+    .logout {
+      position: absolute;
+      /* font-weight: 900; */
+      /* font-size: 10px; */
+      top: 89%;
+      align-items: center;
+      left: 29%;
+    }
+    .logout img {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
     }
   `;
 
@@ -78,6 +93,16 @@ const Header = props => {
             <p>ABOUT</p>
           </Link>
         </div>
+        <div
+          className="logout"
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          <img src="/images/logout.svg" alt="LOGOUT" />
+          <p>LOGOUT</p>
+        </div>
+
         <div className="nav-img">
           <Link to="/">
             <img src="/images/nintro.svg" alt="첫화면" />
@@ -106,15 +131,6 @@ const Header = props => {
           >
             <img src="/images/nchart.svg" alt="차트" />
             <p>차트</p>
-          </div>
-
-          <div
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            <img src="/images/nabout.svg" alt="ABOUT" />
-            <p>LOGOUT</p>
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@ const Intro = props => {
       alert("성별을 입력하세요.");
       return;
     }
-    if (age === 0 || age > 100) {
+    if (age === "" || age > 100) {
       alert("나이를 0에서 100까지만 입력하세요.");
       return;
     }
