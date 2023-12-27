@@ -118,10 +118,11 @@ export const CalenPageNew = props => {
   // 캘린더 관련
   // 일별 자료 출력하기
   const dateCellRender = value => {
-    const selectDate = `${value.year()}-${value.month() + 1}-${value.date()}`;
-    const findeShowList = isEmoList.filter(
-      item => item.day.trim() === selectDate,
-    );
+    const selectDate = dayjs(value).format("YYYY-MM-DD");
+
+    // const selectDate = `${value.year()}-${value.month() + 1}-${value.date()}`;
+
+    const findeShowList = isEmoList.filter(item => item.day === selectDate);
     return (
       <ul className="events">
         {findeShowList.map(item => (
@@ -147,6 +148,8 @@ export const CalenPageNew = props => {
   const cellRender = (current, info) => {
     if (info.type === "date") {
       return dateCellRender(current);
+    } else if (info.type === "month") {
+      return dateCellRender(current);
     }
     return info.originNode;
   };
@@ -171,6 +174,21 @@ export const CalenPageNew = props => {
   useEffect(() => {
     setSelectedDate2(dayjs());
   }, []);
+
+  const onPanelChange = value => {
+    const selectDate = dayjs(value).format("YYYY-MM-DD");
+    const ddd = selectDate.split("-");
+    getTodoIuser(
+      props.iuserInfo.iuser,
+      ddd[0],
+      ddd[1],
+      ddd[2],
+      getTodoIuserSucess,
+    );
+
+    getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess);
+  };
+
   return (
     <CalenStyle>
       <div className="left">
@@ -183,6 +201,7 @@ export const CalenPageNew = props => {
           <Calendar
             cellRender={cellRender}
             onSelect={handleDateSelect}
+            onPanelChange={onPanelChange}
             value={selectedDate2}
           />
         </div>

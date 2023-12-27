@@ -183,7 +183,7 @@ export const CalenPage = () => {
               currentMonth.getMonth() + 1
             }월 ${selectedDate.getDate()}일`}</div>
             <button className="calen-next" onClick={handleNextMonth}>
-              <img src="/images/iconright.svg" />
+              <img src="/images/iconright.svg" alt="" />
             </button>
           </div>
 
@@ -261,14 +261,14 @@ export const CalenPage = () => {
               <p>강아지 밥주기</p>
             </ul>
             <button className="delet-bt">
-              <img src="./images/deleten.svg" />
+              <img src="./images/deleten.svg"  alt=""/>
             </button>
 
             <ul className="todo-list">
               <div className="red-line"></div>
               <p>강아지 밥주기</p>
               <button>
-                <img src="./images/deleten.svg" />
+                <img src="./images/deleten.svg"  alt=""/>
               </button>
             </ul> */}
           </div>

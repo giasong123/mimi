@@ -81,7 +81,7 @@ const Intro = props => {
 
         <div className="intro-l">
           <div>
-            <img src="./images/logob.png" alt="Logo" />
+            <img src="/images/logob.png" alt="Logo" />
           </div>
           <div>
             <ul>
@@ -138,7 +138,7 @@ const Intro = props => {
 
         <div className="intro-r">
           <div>
-            <img src="./images/logow.png" alt="Logo" />
+            <img src="/images/logow.png" alt="Logo" />
           </div>
           <ul>
             <p>

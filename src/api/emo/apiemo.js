@@ -21,6 +21,7 @@ export const postEmo = async (
     console.log(error);
     alert("서버가 불안정합니다. 잠시 뒤 다시 시도해 주세요.");
     failEmo();
+    window.location.href = "/";
   }
 };
 
@@ -44,5 +45,6 @@ export const getEmoIuser = async (iuser, year, month, getEmoSuccess) => {
     alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
     // 샘플 즉, 서버 오류시 샘플 데이터로 작업하기
     // {"emotion":null,"emotionTag":null,"todos":[]}
+    window.location.href = "/";
   }
 };
