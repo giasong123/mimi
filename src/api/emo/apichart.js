@@ -53,10 +53,6 @@ export const getChart = async (iuser, setChartData, setEmoChart) => {
     setChartData({
       emoChart: [
         {
-          emotionGrade: 3,
-          dayOfTheWeek: 0,
-        },
-        {
           emotionGrade: 5,
           dayOfTheWeek: 0,
         },
