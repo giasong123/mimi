@@ -72,7 +72,7 @@ export const IntroPage = styled.div`
     height: 53px;
     color: #a3a3a3;
     font-size: 25px;
-    padding-left: 15px;
+    padding-left: 10px;
     border: 1px solid #afafaf;
   }
   .intro-log button {

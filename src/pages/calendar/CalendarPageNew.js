@@ -191,7 +191,7 @@ export const CalenPageNew = props => {
         <div className="center-line"></div>
         <div className="todo-inner">
           <div className="todo-inin">
-            <div className="header-todo">
+            <div className="header-top">
               <p className="todo-date">
                 {selectedDate2
                   ? selectedDate2.format("YYYY-MM-DD")
@@ -205,11 +205,14 @@ export const CalenPageNew = props => {
                 />
                 <p>{callImageStr}</p>
               </span>
+            </div>
+
+            <div className="list-add">
               <div className="todoinput">
                 <input
                   type="text"
                   value={newContent}
-                  placeholder="입력해주세요"
+                  placeholder="일정을 입력해주세요"
                   onChange={e => {
                     setNewContent(e.target.value);
                   }}
@@ -219,29 +222,30 @@ export const CalenPageNew = props => {
                   +
                 </button>
               </div>
-            </div>
-            <div className="hr-center"></div>
 
-            <div className="todo-main">
-              <div
-                style={{
-                  overflowX: "hidden",
-                  overflowY: "auto",
-                }}
-              >
-                {todoList.map((item, idx) => {
-                  return (
-                    <TodoInput
-                      iuserInfo={props.iuserInfo}
-                      key={idx}
-                      item={item}
-                      mode={false}
-                      onDelete={() => {
-                        handleDeleteTodo(item);
-                      }}
-                    />
-                  );
-                })}
+              {/* <div className="hr-center"></div> */}
+
+              <div className="todo-main">
+                <div
+                  style={{
+                    overflowX: "hidden",
+                    overflowY: "auto",
+                  }}
+                >
+                  {todoList.map((item, idx) => {
+                    return (
+                      <TodoInput
+                        iuserInfo={props.iuserInfo}
+                        key={idx}
+                        item={item}
+                        mode={false}
+                        onDelete={() => {
+                          handleDeleteTodo(item);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
