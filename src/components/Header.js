@@ -74,13 +74,13 @@ const Header = props => {
       <div className="nav">
         <div className="nabout-icon">
           <Link to="/about">
-            <img src="./images/nabout.svg" />
+            <img src="/images/nabout.svg" alt="ABOUT" />
             <p>ABOUT</p>
           </Link>
         </div>
         <div className="nav-img">
           <Link to="/">
-            <img src="./images/nintro.svg" />
+            <img src="/images/nintro.svg" alt="첫화면" />
             <p>첫화면</p>
           </Link>
           <div
@@ -88,7 +88,7 @@ const Header = props => {
               goRouter("/feel");
             }}
           >
-            <img src="./images/ncheck.svg" />
+            <img src="/images/ncheck.svg" alt="감정상태" />
             <p>감정상태</p>
           </div>
           <div
@@ -96,7 +96,7 @@ const Header = props => {
               goRouter("/calendar");
             }}
           >
-            <img src="./images/ncalen.svg" />
+            <img src="/images/ncalen.svg" alt="캘린더" />
             <p>캘린더</p>
           </div>
           <div
@@ -104,8 +104,17 @@ const Header = props => {
               goRouter("/chart");
             }}
           >
-            <img src="./images/nchart.svg" />
+            <img src="/images/nchart.svg" alt="차트" />
             <p>차트</p>
+          </div>
+
+          <div
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          >
+            <img src="/images/nabout.svg" alt="ABOUT" />
+            <p>LOGOUT</p>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export const emograde = ({ emotionGrade }) => {
   console.log(emoImages);
   return (
     <div>
-      <img src="/images/layer1.svg"></img>
+      <img src="/images/layer1.svg" alt=""></img>
     </div>
   );
 };

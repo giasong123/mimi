@@ -127,5 +127,6 @@ export const getChart = async (iuser, setChartData, setEmoChart) => {
 
     // console.log("서버자료 변환 ", data);
     setEmoChart(data);
+    window.location.href = "/";
   }
 };

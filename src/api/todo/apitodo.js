@@ -15,7 +15,7 @@ export const getTodoIuser = async (
     // const query = `/api/todo/${7}?y=${2023}&m=${12}&d=${21}`;
     // /api/todo/7?y=2023&m=12&d=21/
     const res = await axios.get(query);
-    // console.log("할일 목록 서버 데이터 :", res.data);
+    console.log("할일 목록 서버 데이터 :", res.data);
 
     const resStatus = res.status.toString();
     if (resStatus.charAt(0) === "2") {
