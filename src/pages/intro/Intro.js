@@ -51,7 +51,6 @@ const Intro = props => {
       return;
     }
     if (e.target.name === "age") {
-      //
       const n = parseInt(e.target.value);
       setAge(n);
       return;
@@ -120,6 +119,7 @@ const Intro = props => {
             </select>
             <br />
 
+            {/* <label name="age">input placeholder</label> */}
             <input
               placeholder="나이를 입력해주세요"
               type="number"
