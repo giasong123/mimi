@@ -10,7 +10,7 @@ import { postUser } from "../../api/user/apiuser";
 
 const initNickName = "";
 const initGender = "";
-const initAge = 0;
+const initAge = "";
 
 const Intro = props => {
   const [nickName, setNickName] = useState(initNickName);
@@ -121,11 +121,11 @@ const Intro = props => {
             <br />
 
             <input
+              placeholder="나이를 입력해주세요"
               type="number"
               max={100}
               min={0}
               name="age"
-              placeholder="나이를 입력해주세요"
               value={age}
               onChange={e => {
                 handleChangeMember(e);

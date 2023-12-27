@@ -8,7 +8,9 @@ const OneWeekEmo = props => {
   return (
     <div className="feel-facebox">
       <div className="feel-title">
-        <p>{userName}님은 한 주를 이렇게 보냈어요</p>
+        <p>
+          <strong>{userName}</strong>님은 한 주를 이렇게 보냈어요
+        </p>
       </div>
       <div className="feel-face">
         <ul>

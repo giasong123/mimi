@@ -33,10 +33,12 @@ const Chart = props => {
           ) : (
             ""
           )}
-
           <hr className="half-line"></hr>
-
           {chartData ? <LineChart lineData={emoChart}></LineChart> : ""}
+          <img className="arrow" src="/images/nextbotton.png" alt="" />
+          <div className="line-chartkeyword">
+            <p>우울감</p>
+          </div>
           {chartData ? (
             <KeyWordChart
               good={chartData.good}
@@ -46,6 +48,7 @@ const Chart = props => {
           ) : (
             ""
           )}
+          ;
         </div>
       </div>
     </div>
