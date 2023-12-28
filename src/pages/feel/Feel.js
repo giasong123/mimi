@@ -3,7 +3,7 @@ import "../../styles/feel/feel.css";
 import { postEmo } from "../../api/emo/apiemo";
 import { useNavigate } from "react-router-dom";
 
-const Feel = (props) => {
+const Feel = props => {
   const navigate = useNavigate();
   const nowIcon = useRef(null);
 
@@ -58,7 +58,19 @@ const Feel = (props) => {
       return;
     }
 
-    postEmo(props.iuserInfo.iuser, feelPoint, feelMood, failEmo, successNext);
+    postEmo(
+      props.iuserInfo.iuser,
+      feelPoint,
+      feelMood,
+      failEmo,
+      successNext,
+      failFn,
+    );
+  };
+
+  const failFn = () => {
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
 
   const successNext = () => {
@@ -67,7 +79,7 @@ const Feel = (props) => {
   };
 
   const failEmo = () => {
-    console.log("다시 작성");
+    // "다시 작성");
     nowIcon.current.style.transform = "scale(1.0)";
     nowIcon.current.style.paddingBottom = "0px";
     setFeelPoint(0);
@@ -174,7 +186,7 @@ const Feel = (props) => {
                   handleClickMood("기쁜", e);
                 }}
               />
-              <br/>
+              <br />
               <img
                 src="./images/hopeful.svg"
                 alt=""
@@ -246,7 +258,7 @@ const Feel = (props) => {
                   handleClickMood("당황한", e);
                 }}
               />
-              <br/>
+              <br />
               <img
                 src="./images/insensitive.svg"
                 alt=""
@@ -325,7 +337,7 @@ const Feel = (props) => {
                   handleClickMood("외로운", e);
                 }}
               />
-              <br/>
+              <br />
               <img
                 src="./images/mortifying.svg"
                 alt=""

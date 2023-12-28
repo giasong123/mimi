@@ -12,11 +12,10 @@ const about = () => {
         <div className="service_movie">
           <div>
             <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/Xp8Ep1W-azw?si=ciulgLltVcPnpS56"
+              width="550"
+              height="400"
+              src="https://www.youtube.com/embed/l9VMBYRVbdI?si=_G-K9aEmt8Gz3KoJ"
               title="YouTube video player"
-              // frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
@@ -30,7 +29,7 @@ const about = () => {
           <ul>
             <div className="b_tag"></div>
             <li>이름: 김주영</li>
-            <li>담당파트:인트로 페이지,캘린더 및 투두</li>
+            <li>담당파트:인트로 페이지,캘린더 및 투두,카테고리</li>
             <li>
               <a
                 href="https://github.com/zuicy99?tab=repositories"
@@ -55,7 +54,7 @@ const about = () => {
             </li>
             <div className="b_tag"></div>
             <li>이름: 김도현</li>
-            <li>담당파트:에러 페이지 및 차트</li>
+            <li>담당파트:에러 페이지 및 차트,피그마</li>
             <li>
               <a href="https://github.com/dsa9925" className="a_tag">
                 깃허브
@@ -77,7 +76,7 @@ const about = () => {
             </li>
             <div className="b_tag"></div>
             <li>이름: 송보경</li>
-            <li>담당파트:about 페이지 및 이모션 </li>
+            <li>담당파트:about 페이지 및 이모션,canva </li>
             <li>
               <a
                 href="https://github.com/giasong123/mimi.git"
@@ -85,7 +84,10 @@ const about = () => {
               >
                 (공통)깃허브
               </a>
-              <a href="https://github.com/giasong123?tab=repositories" className="a_tag">
+              <a
+                href="https://github.com/giasong123?tab=repositories"
+                className="a_tag"
+              >
                 (개인)깃허브
               </a>
             </li>
@@ -103,7 +105,7 @@ const about = () => {
         <div className="service_be">
           <p>Back-End</p>
           <ul>
-           <div className="b_tag"></div>
+            <div className="b_tag"></div>
             <li>
               <a
                 href="https://github.com/joe-in-me/team6_back_end.git"

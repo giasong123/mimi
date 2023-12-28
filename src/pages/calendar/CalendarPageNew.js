@@ -4,7 +4,7 @@ import { CalenStyle } from "../../styles/calen/calenstyle";
 import { TodoRight } from "../../styles/calen/todostyle";
 import TodoInput from "../../components/calenders/TodoInput";
 import { deleteTodo, getTodoIuser, postTodo } from "../../api/todo/apitodo";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { getEmoIuser } from "../../api/emo/apiemo";
 
 import { Calendar, Badge } from "antd";
@@ -29,7 +29,7 @@ export const CalenPageNew = props => {
 
   const handleDeleteTodo = item => {
     // console.log(item.itodo);
-    deleteTodo(props.iuserInfo.iuser, item.itodo, deleteSuccess);
+    deleteTodo(props.iuserInfo.iuser, item.itodo, deleteSuccess, failFn);
   };
   const deleteSuccess = () => {
     alert("삭제에 성공하였습니다.");
@@ -42,9 +42,15 @@ export const CalenPageNew = props => {
       dd[1],
       dd[2],
       getTodoIuserSucess,
+      failFn,
     );
 
-    getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess);
+    getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess, failFn);
+  };
+  const navigate = useNavigate();
+  const failFn = () => {
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
 
   const getTodoIuserSucess = _data => {
@@ -65,9 +71,10 @@ export const CalenPageNew = props => {
       ddd[1],
       ddd[2],
       getTodoIuserSucess,
+      failFn,
     );
 
-    getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess);
+    getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess, failFn);
   }, []);
 
   // 코드 수정 (2023 12 22)
@@ -88,7 +95,7 @@ export const CalenPageNew = props => {
       startDate: selectedDate2.format("YYYY-MM-DD"),
       endDate: selectedDate2.format("YYYY-MM-DD"),
     };
-    postTodo(obj, postTodoSuccess);
+    postTodo(obj, postTodoSuccess, failFn);
   };
 
   const postTodoSuccess = _obj => {
@@ -104,9 +111,10 @@ export const CalenPageNew = props => {
       dd[1],
       dd[2],
       getTodoIuserSucess,
+      failFn,
     );
 
-    getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess);
+    getEmoIuser(props.iuserInfo.iuser, dd[0], dd[1], getEmoSuccess, failFn);
   };
 
   const [isEmoList, setIsEmoList] = useState([]);
@@ -167,6 +175,7 @@ export const CalenPageNew = props => {
       dd[1],
       dd[2],
       getTodoIuserSucess,
+      failFn,
     );
     setSelectedDate2(value);
   };
@@ -185,9 +194,10 @@ export const CalenPageNew = props => {
       ddd[1],
       ddd[2],
       getTodoIuserSucess,
+      failFn,
     );
 
-    getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess);
+    getEmoIuser(props.iuserInfo.iuser, ddd[0], ddd[1], getEmoSuccess, failFn);
   };
 
   return (

@@ -4,7 +4,7 @@ import { CalenStyle } from "../../styles/calen/calenstyle";
 import { TodoRight } from "../../styles/calen/todostyle";
 import TodoInput from "../../components/calenders/TodoInput";
 import { deleteTodo, getTodoIuser } from "../../api/todo/apitodo";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 const initTodoList = [];
 const initChoiceDate = "";
@@ -23,7 +23,7 @@ export const CalenPage = () => {
   const { iuser, itodo } = useParams();
 
   const param = useParams();
-  console.log(param.iuser);
+  // console.log(param.iuser);
 
   // 선택된 날짜 state
   const [choiceDate, setChoiceDate] = useState(initChoiceDate);
@@ -113,12 +113,18 @@ export const CalenPage = () => {
             setTodoList,
             setCallImageId,
             setCallImageStr,
+            failFn,
           );
         }}
       >
         {day > 0 && day}
       </div>
     ));
+  };
+  const navigate = useNavigate();
+  const failFn = () => {
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
 
   // 투두리스트
@@ -159,15 +165,15 @@ export const CalenPage = () => {
         todoContent: "할일추가해주세요",
       });
       setTodoList(arr);
-      console.log(arr);
+      // console.log(arr);
     } else {
       alert("리스트 추가는 10개까지 입니다.");
     }
   };
 
   const handleDeleteTodo = item => {
-    console.log(handleDeleteTodo);
-    deleteTodo(iuser, itodo, item);
+    // console.log(handleDeleteTodo);
+    deleteTodo(iuser, itodo, item, failFn);
     // setTodoList();
   };
   // console.log(getTodo.emotionGrade);

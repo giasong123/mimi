@@ -6,6 +6,7 @@ export const postEmo = async (
   emoTag,
   failEmo,
   successNext,
+  failFN,
 ) => {
   try {
     const emoData = {
@@ -15,23 +16,30 @@ export const postEmo = async (
     };
 
     const res = await axios.post("/api/emo", emoData);
-    console.log(res.data);
+    // console.log(res.data);
     successNext();
   } catch (error) {
-    console.log(error);
-    alert("서버가 불안정합니다. 잠시 뒤 다시 시도해 주세요.");
+    // console.log(error);
+    // alert("서버가 불안정합니다. 잠시 뒤 다시 시도해 주세요.");
     failEmo();
-    window.location.href = "/";
+
+    failFN();
   }
 };
 
-export const getEmoIuser = async (iuser, year, month, getEmoSuccess) => {
-  console.log("getEmoIuser");
+export const getEmoIuser = async (
+  iuser,
+  year,
+  month,
+  getEmoSuccess,
+  failFN,
+) => {
+  // console.log("getEmoIuser");
 
   try {
     const query = `/api/emo/${iuser}?y=${year}&m=${month}`;
     const res = await axios.get(query);
-    console.log(res.data);
+    // console.log(res.data);
     const resStatus = res.status.toString();
     if (resStatus.charAt(0) === "2") {
       getEmoSuccess(res.data);
@@ -41,10 +49,11 @@ export const getEmoIuser = async (iuser, year, month, getEmoSuccess) => {
       alert("잘못된 요청입니다.");
     }
   } catch (error) {
-    console.log(error);
-    alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
+    // console.log(error);
+    // alert("서버가 불안정합니다. 잠시 후 실행해 주세요.");
     // 샘플 즉, 서버 오류시 샘플 데이터로 작업하기
     // {"emotion":null,"emotionTag":null,"todos":[]}
-    window.location.href = "/";
+
+    failFN();
   }
 };
