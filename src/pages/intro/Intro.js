@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IntroWrap } from "../../styles/introstyle/introwrap";
 import { IntroPage } from "../../styles/introstyle/intropage";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { postUser } from "../../api/user/apiuser";
 // intro page 안에 js를 넣으니 import 문제 생겨서 잠깐 page로 빼줌
 // intro emotion css 적용 완료
@@ -68,7 +68,8 @@ const Intro = props => {
   };
 
   const failFn = () => {
-    console.log("다시 작성");
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
 
   return (

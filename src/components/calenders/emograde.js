@@ -8,7 +8,7 @@ export const emograde = ({ emotionGrade }) => {
     { emotionGrade: 4, path: `/images/layer4.svg` },
     { emotionGrade: 5, path: `/images/layer5.svg` },
   ];
-  console.log(emoImages);
+  // console.log(emoImages);
   return (
     <div>
       <img src="/images/layer1.svg" alt=""></img>

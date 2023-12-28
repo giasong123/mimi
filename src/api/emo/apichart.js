@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getChart = async (iuser, setChartData, setEmoChart) => {
+export const getChart = async (iuser, setChartData, setEmoChart, failFN) => {
   try {
     const res = await axios.get(`/api/emo/chart/${iuser}`);
-    console.log(res.data);
+    // console.log(res.data);
     setChartData(res.data);
     // Novo 데이터 구성을 참조
     const data = {
@@ -48,8 +48,8 @@ export const getChart = async (iuser, setChartData, setEmoChart) => {
     // console.log("서버자료 변환 ", data);
     setEmoChart(data);
   } catch (error) {
-    console.log(error);
-    alert("서버 상태가 불안정합니다. 잠시 후 시도해 주세요.");
+    // console.log(error);
+    // alert("서버 상태가 불안정합니다. 잠시 후 시도해 주세요.");
     setChartData({
       emoChart: [
         {
@@ -127,6 +127,6 @@ export const getChart = async (iuser, setChartData, setEmoChart) => {
 
     // console.log("서버자료 변환 ", data);
     setEmoChart(data);
-    window.location.href = "/";
+    failFN();
   }
 };

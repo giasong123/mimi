@@ -6,9 +6,10 @@ import KeyWordChart from "../../components/chart/KeyWordChart";
 import LineChart from "../../components/chart/LineChart";
 import { getChart } from "../../api/emo/apichart";
 import OneWeekEmo from "../../components/chart/OneWeekEmo";
+import { useNavigate } from "react-router-dom";
 
 const Chart = props => {
-  console.log("iuser: ", props.iuserInfo.iuser);
+  // console.log("iuser: ", props.iuserInfo.iuser);
   // 화면에 보여줄 서버 데이터 관리
   const [chartData, setChartData] = useState(null);
   const [emoChart, setEmoChart] = useState([]);
@@ -16,8 +17,14 @@ const Chart = props => {
   const [userName, setUserName] = useState(props.iuserInfo.userNickName);
 
   const getChartAction = () => {
-    console.log("자료호출");
-    getChart(props.iuserInfo.iuser, setChartData, setEmoChart);
+    // console.log("자료호출");
+    getChart(props.iuserInfo.iuser, setChartData, setEmoChart, failFn);
+  };
+
+  const navigate = useNavigate();
+  const failFn = () => {
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
 
   useEffect(() => {

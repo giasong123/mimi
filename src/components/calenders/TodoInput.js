@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/calen/todostyle";
 import styled from "@emotion/styled";
 import { patchTodo } from "../../api/todo/apitodo";
+import { useNavigate } from "react-router-dom";
 
 const TodoInput = props => {
   const item = props.item;
@@ -18,10 +19,15 @@ const TodoInput = props => {
         itodo: item.itodo,
         todoContent: memo,
       };
-      patchTodo(obj, patchSuccess);
+      patchTodo(obj, patchSuccess, failFn);
     }
     // 수정 내용 완료
     // if(_수정완료 === false)
+  };
+  const navigate = useNavigate();
+  const failFn = () => {
+    alert("잠시 서버가 불안정합니다.\n다시 시도해주세요.");
+    navigate("/");
   };
   const patchSuccess = () => {
     // 수정완료
