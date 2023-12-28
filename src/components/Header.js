@@ -96,7 +96,8 @@ const Header = props => {
         <div
           className="logout"
           onClick={() => {
-            navigate("/");
+            window.location.href = "/";
+            // navigate("/");
           }}
         >
           <img src="/images/logout.svg" alt="LOGOUT" />
